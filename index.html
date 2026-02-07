@@ -9,7 +9,7 @@
         :root {
             --dorado: #c5a044;
             --oscuro: #0a0a0a;
-            --overlay: rgba(0, 0, 0, 0.85);
+            --blanco: #ffffff;
         }
 
         body, html {
@@ -19,9 +19,9 @@
             color: white; overflow-x: hidden;
         }
 
-        /* --- SECCIÓN PRINCIPAL (HERO) --- */
+        /* FONDO PRINCIPAL */
         .hero-bg {
-            background-image: linear-gradient(var(--overlay), var(--overlay)), 
+            background-image: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), 
                               url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600'); 
             background-size: cover; background-position: center;
             height: 100vh; display: flex; flex-direction: column;
@@ -29,64 +29,63 @@
 
         nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; }
         .logo { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 1px; }
-        .btn-consulta { background: var(--dorado); color: var(--oscuro); padding: 12px 24px; font-weight: bold; text-transform: uppercase; font-size: 0.75rem; text-decoration: none; }
 
-        .hero-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
-        .sede-tag { border: 1px solid var(--dorado); color: var(--dorado); padding: 6px 25px; font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 30px; text-transform: uppercase; }
-        h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 4rem); color: var(--dorado); margin: 0; line-height: 1.2; text-transform: uppercase; }
-        .subtitle { font-size: 1.1rem; max-width: 700px; margin: 25px 0 40px 0; font-weight: 300; color: #ccc; }
+        .hero-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .sede-tag { border: 1px solid var(--dorado); color: var(--dorado); padding: 6px 25px; font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 20px; text-transform: uppercase; }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--dorado); margin: 0; text-transform: uppercase; }
+        
+        .cta-container { display: flex; gap: 20px; margin-top: 30px; }
+        .btn-main { background: var(--dorado); color: var(--oscuro); padding: 18px 40px; text-decoration: none; font-weight: 700; text-transform: uppercase; border: none; cursor: pointer; }
+        .btn-outline { border: 1px solid white; color: white; padding: 18px 40px; text-decoration: none; text-transform: uppercase; background: transparent; cursor: pointer; transition: 0.3s; }
+        .btn-outline:hover { background: white; color: black; }
 
-        .cta-container { display: flex; gap: 20px; }
-        .btn-main { background: var(--dorado); color: var(--oscuro); padding: 18px 40px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; border: none; cursor: pointer; }
-        .btn-outline { border: 1px solid white; color: white; padding: 18px 40px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; }
-
-        /* --- POPUP DE ÁREAS DE PRÁCTICA --- */
-        .modal {
-            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);
+        /* --- VENTANA POPUP (MODAL) --- */
+        #modalAreas {
+            display: none; /* Oculto por defecto */
+            position: fixed; z-index: 9999; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.95);
             overflow-y: auto;
         }
 
-        .modal-content {
-            background-color: white; margin: 5% auto; padding: 40px;
-            width: 80%; max-width: 800px; color: #333; text-align: center;
-            position: relative; border-radius: 4px;
+        .modal-body {
+            background-color: var(--blanco);
+            margin: 5vh auto; padding: 60px 40px;
+            width: 90%; max-width: 700px;
+            color: #111; border-radius: 2px;
+            position: relative; text-align: center;
         }
 
-        .close-modal {
+        .btn-cerrar {
             position: absolute; right: 20px; top: 10px;
-            font-size: 30px; cursor: pointer; color: var(--dorado);
+            font-size: 40px; cursor: pointer; color: var(--dorado);
+            line-height: 1;
         }
 
-        .modal-header h4 { color: var(--dorado); letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 10px; }
-        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; margin-top: 0; }
+        .modal-header h4 { color: var(--dorado); letter-spacing: 4px; font-size: 0.7rem; margin-bottom: 5px; }
+        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; margin-top: 0; border-bottom: 2px solid var(--dorado); display: inline-block; padding-bottom: 10px; margin-bottom: 40px; }
 
-        /* Acordeón */
-        .accordion { border-top: 1px solid #eee; margin-top: 30px; text-align: left; }
-        .acc-item { border-bottom: 1px solid #eee; }
-        .acc-header {
-            padding: 20px 0; cursor: pointer; display: flex;
+        /* ACORDEÓN INTERNO */
+        .acordeon { text-align: left; }
+        .item-area { border-bottom: 1px solid #ddd; }
+        .titulo-area {
+            padding: 25px 0; cursor: pointer; display: flex;
             justify-content: space-between; align-items: center;
-            font-family: 'Cinzel', serif; font-size: 1.1rem; color: #222;
-            transition: 0.3s;
+            font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700;
         }
-        .acc-header:hover { color: var(--dorado); }
-        .acc-header span { color: var(--dorado); font-size: 1.5rem; }
-        .acc-content {
-            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
-            background: #f9f9f9; padding: 0 20px; color: #666; font-size: 0.95rem;
-        }
-
-        /* WhatsApp */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; background: #25d366;
-            width: 60px; height: 60px; border-radius: 50%; display: flex;
-            justify-content: center; align-items: center; z-index: 100;
+        .titulo-area:hover { color: var(--dorado); }
+        .titulo-area span { color: var(--dorado); font-size: 1.4rem; }
+        
+        .contenido-area {
+            max-height: 0; overflow: hidden; 
+            transition: all 0.4s ease-in-out;
+            color: #555; font-size: 0.95rem; line-height: 1.6;
         }
 
-        @media (max-width: 768px) {
-            .nav-links, .btn-consulta { display: none; }
-            .cta-container { flex-direction: column; width: 100%; }
+        /* WHATSAPP */
+        .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; }
+
+        @media (max-width: 600px) {
+            .cta-container { flex-direction: column; width: 80%; }
         }
     </style>
 </head>
@@ -95,86 +94,87 @@
 <div class="hero-bg">
     <nav>
         <div class="logo">CMD <span style="color: var(--dorado);">ESTUDIO JURÍDICO</span></div>
-        <a href="https://wa.me/59898145817" class="btn-consulta">Consulta Virtual</a>
     </nav>
 
     <div class="hero-content">
         <div class="sede-tag">Sede Pando & Canelones</div>
         <h1>Defensa Estratégica.<br>Soluciones Reales.</h1>
-        <p class="subtitle">Abogados especializados en Derecho Penal, Administrativo y Corporativo.</p>
-        
         <div class="cta-container">
             <a href="https://wa.me/59898145817" class="btn-main">Iniciar Evaluación</a>
-            <button class="btn-outline" onclick="openModal()">Ver Áreas</button>
+            <button class="btn-outline" onclick="mostrarModal()">Ver Áreas</button>
         </div>
     </div>
 </div>
 
-<div id="areasModal" class="modal">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
+<div id="modalAreas">
+    <div class="modal-body">
+        <span class="btn-cerrar" onclick="ocultarModal()">&times;</span>
         <div class="modal-header">
             <h4>EXCELENCIA LEGAL</h4>
             <h2>Áreas de Práctica</h2>
-            <div style="width: 50px; height: 2px; background: var(--dorado); margin: 20px auto;"></div>
         </div>
 
-        <div class="accordion">
-            <div class="acc-item">
-                <div class="acc-header" onclick="toggleAcc(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
-                <div class="acc-content">
-                    <p>Defensa técnica en delitos económicos y responsabilidad empresarial. Atención prioritaria ante detenciones y urgencias 24 horas.</p>
-                </div>
+        <div class="acordeon">
+            <div class="item-area">
+                <div class="titulo-area" onclick="toggleArea(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
+                <div class="contenido-area"><p>Defensa técnica en delitos económicos y responsabilidad empresarial. Atención prioritaria ante detenciones y urgencias 24 horas.</p></div>
             </div>
-            <div class="acc-item">
-                <div class="acc-header" onclick="toggleAcc(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
-                <div class="acc-content">
-                    <p>Asesoramiento integral en compraventas, hipotecas, arrendamientos y regularización de títulos de propiedad.</p>
-                </div>
+            <div class="item-area">
+                <div class="titulo-area" onclick="toggleArea(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
+                <div class="contenido-area"><p>Asesoramiento en compraventas, hipotecas, arrendamientos y regularización de títulos en todo el departamento de Canelones.</p></div>
             </div>
-            <div class="acc-item">
-                <div class="acc-header" onclick="toggleAcc(this)">DERECHO CORPORATIVO <span>+</span></div>
-                <div class="acc-content">
-                    <p>Constitución de sociedades, redacción de contratos comerciales y asesoría legal permanente para empresas.</p>
-                </div>
+            <div class="item-area">
+                <div class="titulo-area" onclick="toggleArea(this)">DERECHO CORPORATIVO <span>+</span></div>
+                <div class="contenido-area"><p>Constitución de sociedades, contratos comerciales y asesoría legal preventiva para empresas y emprendedores locales.</p></div>
             </div>
-            <div class="acc-item">
-                <div class="acc-header" onclick="toggleAcc(this)">FAMILIA & SUCESIONES <span>+</span></div>
-                <div class="acc-content">
-                    <p>Gestión de divorcios, pensiones alimenticias, tenencia y tramitación de sucesiones de forma ágil y reservada.</p>
-                </div>
+            <div class="item-area">
+                <div class="titulo-area" onclick="toggleArea(this)">FAMILIA & SUCESIONES <span>+</span></div>
+                <div class="contenido-area"><p>Divorcios, pensiones, tenencia y sucesiones. Tramitación ágil con el enfoque humano que tu familia necesita.</p></div>
             </div>
         </div>
     </div>
 </div>
 
-<a href="https://wa.me/59898145817" class="whatsapp-float" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" alt="WhatsApp">
+<a href="https://wa.me/59898145817" class="wp-btn" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35">
 </a>
 
 <script>
-    function openModal() { document.getElementById("areasModal").style.display = "block"; }
-    function closeModal() { document.getElementById("areasModal").style.display = "none"; }
+    // Funciones para abrir y cerrar el Popup
+    function mostrarModal() {
+        document.getElementById("modalAreas").style.display = "block";
+        document.body.style.overflow = "hidden"; // Evita que la página de fondo se mueva
+    }
 
-    function toggleAcc(header) {
-        const content = header.nextElementSibling;
-        const icon = header.querySelector('span');
+    function ocultarModal() {
+        document.getElementById("modalAreas").style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+
+    // Función para el acordeón
+    function toggleArea(elemento) {
+        const contenido = elemento.nextElementSibling;
+        const icono = elemento.querySelector('span');
         
-        if (content.style.maxHeight) {
-            content.style.maxHeight = null;
-            icon.textContent = "+";
-            content.style.padding = "0 20px";
+        if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
+            contenido.style.maxHeight = "0px";
+            icono.textContent = "+";
+            elemento.style.color = "#111";
         } else {
-            content.style.maxHeight = content.scrollHeight + "px";
-            icon.textContent = "×";
-            content.style.padding = "20px";
+            // Cerramos otros que estén abiertos (opcional)
+            document.querySelectorAll('.contenido-area').forEach(c => c.style.maxHeight = "0px");
+            document.querySelectorAll('.titulo-area span').forEach(s => s.textContent = "+");
+
+            contenido.style.maxHeight = contenido.scrollHeight + "px";
+            icono.textContent = "−";
+            elemento.style.color = "#c5a044";
         }
     }
 
-    // Cerrar si hace clic fuera del cuadro blanco
+    // Cerrar el popup si hacen clic fuera del cuadro blanco
     window.onclick = function(event) {
-        let modal = document.getElementById("areasModal");
-        if (event.target == modal) { closeModal(); }
+        let modal = document.getElementById("modalAreas");
+        if (event.target == modal) { ocultarModal(); }
     }
 </script>
 
