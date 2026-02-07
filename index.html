@@ -9,8 +9,7 @@
         :root {
             --dorado: #c5a044;
             --oscuro: #0a0a0a;
-            --texto-claro: #e0e0e0;
-            --overlay: rgba(0, 0, 0, 0.75);
+            --overlay: rgba(0, 0, 0, 0.8);
         }
 
         body, html {
@@ -23,10 +22,9 @@
             scroll-behavior: smooth;
         }
 
-        /* Fondo con imagen */
         .hero-bg {
             background-image: linear-gradient(var(--overlay), var(--overlay)), 
-                              url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600'); /* Imagen de oficina moderna */
+                              url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1600'); 
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -34,32 +32,25 @@
             flex-direction: column;
         }
 
-        /* Navegación */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 50px;
-            background: rgba(0,0,0,0.5);
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-text {
             font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             letter-spacing: 2px;
         }
 
@@ -69,22 +60,18 @@
             transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: var(--dorado);
-        }
+        .nav-links a:hover { color: var(--dorado); }
 
         .btn-consulta {
             background-color: var(--dorado);
             color: var(--oscuro);
-            padding: 10px 20px;
+            padding: 12px 24px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             text-decoration: none;
-            border-radius: 2px;
         }
 
-        /* Contenido Principal */
         .hero-content {
             flex: 1;
             display: flex;
@@ -98,31 +85,31 @@
         .sede-tag {
             border: 1px solid var(--dorado);
             color: var(--dorado);
-            padding: 5px 20px;
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
+            padding: 6px 25px;
+            font-size: 0.65rem;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
             text-transform: uppercase;
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 5vw, 4rem);
             color: var(--dorado);
             margin: 0;
-            line-height: 1.1;
-            max-width: 800px;
+            line-height: 1.2;
+            text-transform: uppercase;
         }
 
         .subtitle {
             font-size: 1.1rem;
-            max-width: 600px;
-            margin: 30px 0;
+            max-width: 700px;
+            margin: 25px 0 40px 0;
             font-weight: 300;
-            color: var(--texto-claro);
+            line-height: 1.6;
+            color: #ccc;
         }
 
-        /* Botones */
         .cta-container {
             display: flex;
             gap: 20px;
@@ -131,31 +118,24 @@
         .btn-main {
             background-color: var(--dorado);
             color: var(--oscuro);
-            padding: 15px 35px;
+            padding: 18px 40px;
             text-decoration: none;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: 0.3s;
+            font-size: 0.85rem;
         }
 
         .btn-outline {
-            border: 1px solid white;
+            border: 1px solid rgba(255,255,255,0.5);
             color: white;
-            padding: 15px 35px;
+            padding: 18px 40px;
             text-decoration: none;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: 0.3s;
+            font-size: 0.85rem;
         }
 
-        .btn-outline:hover {
-            background: white;
-            color: black;
-        }
-
-        /* WhatsApp Float */
-        .whatsapp-icon {
+        /* Botón WhatsApp corregido */
+        .whatsapp-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
@@ -166,13 +146,17 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            z-index: 100;
+            transition: transform 0.3s;
         }
 
+        .whatsapp-float:hover { transform: scale(1.1); }
+
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .nav-links { display: none; }
-            .cta-container { flex-direction: column; }
+            nav { padding: 20px; }
+            .nav-links, .btn-consulta { display: none; }
+            .cta-container { flex-direction: column; width: 80%; }
         }
     </style>
 </head>
@@ -181,7 +165,8 @@
 <div class="hero-bg">
     <nav>
         <div class="logo">
-            <div class="logo-text">CMD <br> <span style="font-size: 0.6rem; color: var(--dorado);">ESTUDIO JURÍDICO</span></div>
+            ESTUDIO JURÍDICO<br>
+            <span style="color: var(--dorado); font-size: 0.8rem;">Y NOTARIAL</span>
         </div>
         <div class="nav-links">
             <a href="#">Inicio</a>
@@ -189,35 +174,30 @@
             <a href="#">Admisión</a>
             <a href="#">Contacto</a>
         </div>
-        <a href="mailto:dra.alisoncatelotti@gmail.com" class="btn-consulta">Consulta Virtual</a>
+        <a href="https://wa.me/59898145817" class="btn-consulta">Consulta Virtual</a>
     </nav>
 
     <div class="hero-content">
-        <div class="sede-tag">Sede Central & Corporativa</div>
-        <h1>DEFENSA ESTRATÉGICA.<br>SOLUCIONES REALES.</h1>
+        <div class="sede-tag">Sede Pando & Canelones</div>
+        <h1>Defensa Estratégica.<br>Soluciones Reales.</h1>
         <p class="subtitle">
-            Especialistas en Derecho Civil, Comercial y Notarial. 
-            Representación de alto nivel con seguridad jurídica garantizada para personas y empresas.
+            Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>
+            Representación de alto nivel con seguridad jurídica garantizada.
         </p>
         
         <div class="cta-container">
-            <a href="#" class="btn-main">Iniciar Evaluación</a>
-            <a href="#servicios" class="btn-outline">Ver Áreas de Práctica</a>
+            <a href="https://wa.me/59898145817?text=Hola,%20solicito%20una%20evaluación%20de%20mi%20caso." class="btn-main">Iniciar Evaluación</a>
+            <a href="#" class="btn-outline">Ver Áreas</a>
         </div>
     </div>
 </div>
 
-<a href="https://wa.me/59898145817?text=Hola,%20me%20gustaría%20realizar%20una%20consulta%20legal." class="whatsapp-icon" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
-</a>
-</a>
+<a href="https://wa.me/59898145817?text=Hola,%20vengo%20de%20la%20web%20y%20necesito%20una%20consulta." class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" alt="WhatsApp">
 </a>
 
 </body>
 </html>
-
-
-
 
 
 
