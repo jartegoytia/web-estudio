@@ -60,30 +60,21 @@
 
         body, html { margin: 0; padding: 0; height: 100%; font-family: 'Montserrat', sans-serif; background-color: var(--oscuro); color: white; overflow-x: hidden; }
 
-        /* --- NAVBAR MODIFICADA --- */
-        .navbar { 
-            position: absolute; 
-            top: 0; left: 0; 
-            width: 100%; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 15px 50px; /* Reduje un poco el padding para el logo */
-            box-sizing: border-box; 
-            z-index: 1000; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%); 
-        }
-
-        /* Estilos para el nuevo Logo */
+        /* --- NAVBAR --- */
+        .navbar { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; box-sizing: border-box; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%); }
+        
+        /* Contenedor del Logo */
         .logo-container {
             display: flex;
             align-items: center;
+            height: 80px; /* Espacio reservado para el logo */
         }
-        
+
         .logo-img {
-            height: 70px; /* Ajusta este tamaño según prefieras */
+            height: 100%; /* Ajusta al alto del contenedor */
             width: auto;
             display: block;
+            object-fit: contain;
         }
         
         .nav-links { display: flex; gap: 35px; align-items: center; }
@@ -130,7 +121,6 @@
         @media (max-width: 992px) {
             .nav-links { display: none; }
             .cta-container { flex-direction: column; width: 100%; }
-            .navbar { padding: 15px 20px; }
         }
     </style>
 </head>
@@ -138,7 +128,7 @@
 
 <nav class="navbar">
     <div class="logo-container">
-        <img src="LOGO.jpg" alt="CMD Estudio Jurídico" class="logo-img">
+        <img src="LOGO.jpg" alt="Logo CMD" class="logo-img">
     </div>
     <div class="nav-links">
         <a href="javascript:void(0)">Inicio</a>
