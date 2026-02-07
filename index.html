@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <script>
-        // Funciones colocadas al inicio para asegurar carga inmediata
         function abrirModal(id) {
             var modal = document.getElementById(id);
             if(modal) {
@@ -28,11 +27,11 @@
             var contenido = elemento.nextElementSibling;
             var icono = elemento.querySelector('span');
             
-            if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
+            if (contenido && contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
                 contenido.style.maxHeight = "0px";
                 icono.textContent = "+";
                 elemento.style.color = "#1a1a1a";
-            } else {
+            } else if (contenido) {
                 var parent = elemento.closest('.acordeon');
                 var todosContenidos = parent.querySelectorAll('.contenido-acc');
                 var todosIconos = parent.querySelectorAll('.titulo-acc span');
@@ -92,6 +91,11 @@
 
         .acordeon { text-align: left; }
         .item-acc { border-bottom: 1px solid #ddd; }
+        
+        /* Estilo para nombres estáticos (Equipo) */
+        .nombre-estatico { padding: 25px 0; display: block; font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; color: #1a1a1a; }
+
+        /* Estilo para acordeón (Áreas) */
         .titulo-acc { padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; }
         .titulo-acc span { color: var(--dorado); font-size: 1.2rem; }
         .contenido-acc { max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: #555; font-size: 0.9rem; }
@@ -138,16 +142,13 @@
         </div>
         <div class="acordeon">
             <div class="item-acc">
-                <div class="titulo-acc" onclick="toggleAcc(this)">Dra. Esc. Alison Catelotti <span>+</span></div>
-                <div class="contenido-acc"><p>Especialista en Derecho Notarial y Real Estate. Directora técnica del estudio.</p></div>
+                <div class="nombre-estatico">Dra. Esc. Alison Catelotti</div>
             </div>
             <div class="item-acc">
-                <div class="titulo-acc" onclick="toggleAcc(this)">Dra. Erika Martínez <span>+</span></div>
-                <div class="contenido-acc"><p>Abogada litigante especializada en Derecho Penal y Compliance empresarial.</p></div>
+                <div class="nombre-estatico">Dra. Erika Martínez</div>
             </div>
             <div class="item-acc">
-                <div class="titulo-acc" onclick="toggleAcc(this)">Esc. Juan Manuel dos Santos <span>+</span></div>
-                <div class="contenido-acc"><p>Escribano Público especializado en sucesiones y gestión de activos inmobiliarios.</p></div>
+                <div class="nombre-estatico">Esc. Juan Manuel dos Santos</div>
             </div>
         </div>
     </div>
@@ -163,11 +164,11 @@
         <div class="acordeon">
             <div class="item-acc">
                 <div class="titulo-acc" onclick="toggleAcc(this)">DERECHO PENAL <span>+</span></div>
-                <div class="contenido-acc"><p>Defensa técnica y asesoramiento penal integral.</p></div>
+                <div class="contenido-acc"><p style="padding-bottom: 15px;">Defensa técnica y asesoramiento penal integral en delitos económicos y responsabilidad empresarial.</p></div>
             </div>
             <div class="item-acc">
                 <div class="titulo-acc" onclick="toggleAcc(this)">NOTARIADO <span>+</span></div>
-                <div class="contenido-acc"><p>Compraventas, títulos y contratos notariales.</p></div>
+                <div class="contenido-acc"><p style="padding-bottom: 15px;">Compraventas, hipotecas, títulos y contratos notariales con seguridad jurídica garantizada.</p></div>
             </div>
         </div>
     </div>
@@ -179,5 +180,6 @@
 
 </body>
 </html>
+
 
 
