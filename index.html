@@ -60,9 +60,31 @@
 
         body, html { margin: 0; padding: 0; height: 100%; font-family: 'Montserrat', sans-serif; background-color: var(--oscuro); color: white; overflow-x: hidden; }
 
-        /* --- NAVBAR --- */
-        .navbar { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 25px 50px; box-sizing: border-box; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%); }
-        .logo-text { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 2px; line-height: 1.2; }
+        /* --- NAVBAR MODIFICADA --- */
+        .navbar { 
+            position: absolute; 
+            top: 0; left: 0; 
+            width: 100%; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 15px 50px; /* Reduje un poco el padding para el logo */
+            box-sizing: border-box; 
+            z-index: 1000; 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%); 
+        }
+
+        /* Estilos para el nuevo Logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 70px; /* Ajusta este tamaño según prefieras */
+            width: auto;
+            display: block;
+        }
         
         .nav-links { display: flex; gap: 35px; align-items: center; }
         .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; cursor: pointer; transition: 0.3s; }
@@ -81,7 +103,6 @@
         .cta-container { display: flex; gap: 20px; }
         .btn-main { background: var(--dorado); color: var(--oscuro); padding: 20px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none; cursor: pointer; }
         
-        /* BOTÓN RECUPERADO: VER ÁREAS ORIGINAL */
         .btn-outline { border: 1px solid white; color: white; padding: 20px 45px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; transition: 0.3s; }
         .btn-outline:hover { background: white; color: black; }
 
@@ -98,27 +119,27 @@
         .acordeon { text-align: left; border-top: 1px solid #eee; margin-top: 20px; }
         .item-acc { border-bottom: 1px solid #eee; }
         
-        /* Equipo Estático */
         .nombre-equipo { padding: 30px 0; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; color: #1a1a1a; display: block; }
 
-        /* Áreas con Acordeón */
         .titulo-acc { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
         .titulo-acc span { color: var(--dorado); font-size: 1.5rem; }
         .contenido-acc { max-height: 0; overflow: hidden; transition: 0.4s ease-in-out; color: #666; font-size: 1rem; line-height: 1.6; }
 
-        /* WHATSAPP FLOAT */
         .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
         @media (max-width: 992px) {
             .nav-links { display: none; }
             .cta-container { flex-direction: column; width: 100%; }
+            .navbar { padding: 15px 20px; }
         }
     </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <div class="logo-text">ESTUDIO JURÍDICO<br><span style="color: var(--dorado); font-size: 0.7rem;">Y NOTARIAL</span></div>
+    <div class="logo-container">
+        <img src="LOGO.jpg" alt="CMD Estudio Jurídico" class="logo-img">
+    </div>
     <div class="nav-links">
         <a href="javascript:void(0)">Inicio</a>
         <a onclick="abrirModal('modalEquipo')">Sobre nosotros</a>
@@ -191,6 +212,5 @@
 
 </body>
 </html>
-
 
 
