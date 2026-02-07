@@ -20,36 +20,35 @@
             color: white; overflow-x: hidden;
         }
 
-        /* --- BARRA DE NAVEGACIÓN SUPERIOR --- */
-        header {
+        /* --- BARRA DE NAVEGACIÓN (NAVBAR) --- */
+        .navbar {
             position: absolute;
             top: 0; left: 0; width: 100%;
             display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 50px;
+            padding: 25px 50px;
             box-sizing: border-box;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            z-index: 1000;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
         }
 
-        .logo-container { display: flex; align-items: center; gap: 15px; }
-        .logo-icon { width: 40px; height: auto; filter: sepia(1) saturate(5) hue-rotate(10deg); }
+        .logo-box { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 35px; filter: sepia(1) saturate(5) brightness(0.8); }
         .logo-text { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 2px; line-height: 1.2; }
 
-        .nav-menu { display: flex; gap: 30px; }
-        .nav-menu a {
+        .nav-links { display: flex; gap: 35px; }
+        .nav-links a {
             color: white; text-decoration: none; text-transform: uppercase;
             font-size: 0.75rem; letter-spacing: 2px; font-weight: 400;
             transition: 0.3s;
         }
-        .nav-menu a:hover { color: var(--dorado); }
+        .nav-links a:hover { color: var(--dorado); }
 
         .btn-consulta-top {
             background: var(--dorado); color: var(--oscuro);
-            padding: 12px 25px; text-decoration: none;
+            padding: 12px 28px; text-decoration: none;
             font-weight: 700; text-transform: uppercase; font-size: 0.75rem;
-            letter-spacing: 1px; transition: 0.3s;
+            letter-spacing: 1px;
         }
-        .btn-consulta-top:hover { opacity: 0.9; }
 
         /* --- SECCIÓN HERO --- */
         .hero-bg {
@@ -59,7 +58,7 @@
             height: 100vh; display: flex; flex-direction: column; justify-content: center;
         }
 
-        .hero-content { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; }
+        .hero-content { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; margin-top: 60px; }
         .sede-tag { border: 1px solid var(--dorado); color: var(--dorado); padding: 8px 30px; font-size: 0.7rem; letter-spacing: 4px; margin-bottom: 35px; text-transform: uppercase; }
         h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--dorado); margin: 0; line-height: 1.1; text-transform: uppercase; }
         .subtitle { font-size: 1.1rem; max-width: 750px; margin: 30px 0 45px 0; font-weight: 300; color: #d1d1d1; line-height: 1.6; }
@@ -69,7 +68,7 @@
         .btn-outline { border: 1px solid white; color: white; padding: 20px 45px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; }
 
         /* --- POPUP DE ÁREAS --- */
-        #modalAreas { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
+        #modalAreas { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
         .modal-body { background: var(--blanco); margin: 50px auto; padding: 60px 50px; width: 90%; max-width: 800px; color: #1a1a1a; position: relative; }
         .btn-cerrar { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: var(--dorado); }
         .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; text-align: center; margin-bottom: 40px; }
@@ -82,32 +81,37 @@
         .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; }
 
         @media (max-width: 992px) {
-            header { padding: 20px; }
-            .nav-menu { display: none; } /* Oculto en móvil por espacio */
+            .navbar { padding: 20px; }
+            .nav-links { display: none; } /* Se oculta en móviles para no amontonar */
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-container">
+<nav class="navbar">
+    <div class="logo-box">
         <img src="https://cdn-icons-png.flaticon.com/512/3252/3252750.png" class="logo-icon" alt="Logo">
         <div class="logo-text">ESTUDIO JURÍDICO<br><span style="color: var(--dorado); font-size: 0.7rem;">Y NOTARIAL</span></div>
     </div>
-    <nav class="nav-menu">
-        <a href="#">Inicio</a>
-        <a href="#">Sobre nosotros</a>
-        <a href="#">Expertise</a>
-        <a href="#">Contacto</a>
-    </nav>
-    <a href="https://wa.me/59898145817" class="btn-consulta-top">Consulta Virtual</a>
-</header>
+    
+    <div class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#sobre-nosotros">Sobre nosotros</a>
+        <a href="#expertice">Expertice</a>
+        <a href="#contacto">Contacto</a>
+    </div>
 
-<div class="hero-bg">
+    <a href="https://wa.me/59898145817" class="btn-consulta-top">Consulta Virtual</a>
+</nav>
+
+<div class="hero-bg" id="inicio">
     <div class="hero-content">
         <div class="sede-tag">Sede Pando & Canelones</div>
         <h1>Defensa Estratégica.<br>Soluciones Reales.</h1>
-        <p class="subtitle">Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>Representación de alto nivel con seguridad jurídica garantizada.</p>
+        <p class="subtitle">
+            Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>
+            Representación de alto nivel con seguridad jurídica garantizada.
+        </p>
         <div class="cta-container">
             <a href="https://wa.me/59898145817" class="btn-main">Iniciar Evaluación</a>
             <button class="btn-outline" onclick="mostrarModal()">Ver Áreas</button>
@@ -130,12 +134,20 @@
                 <div class="titulo-area" onclick="toggleArea(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
                 <div class="contenido-area"><p>Asesoramiento integral en compraventas y regularización de títulos.</p></div>
             </div>
+            <div class="item-area">
+                <div class="titulo-area" onclick="toggleArea(this)">DERECHO CORPORATIVO <span>+</span></div>
+                <div class="contenido-area"><p>Asesoría legal para empresas y startups.</p></div>
+            </div>
+            <div class="item-area">
+                <div class="titulo-area" onclick="toggleArea(this)">FAMILIA & SUCESIONES <span>+</span></div>
+                <div class="contenido-area"><p>Divorcios, pensiones y tramitaciones sucesorias.</p></div>
+            </div>
         </div>
     </div>
 </div>
 
 <a href="https://wa.me/59898145817" class="wp-btn" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" alt="WhatsApp">
 </a>
 
 <script>
