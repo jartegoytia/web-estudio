@@ -42,12 +42,14 @@
         }
         .nav-links a:hover { color: var(--dorado); }
 
+        /* Estilo del botón de Correo */
         .btn-consulta-top {
             background: var(--dorado); color: var(--oscuro);
             padding: 12px 28px; text-decoration: none;
             font-weight: 700; text-transform: uppercase; font-size: 0.75rem;
-            letter-spacing: 1px;
+            letter-spacing: 1px; transition: 0.3s;
         }
+        .btn-consulta-top:hover { background: #b08d3a; }
 
         /* --- HERO --- */
         .hero-bg {
@@ -67,26 +69,23 @@
         .btn-outline { border: 1px solid white; color: white; padding: 20px 45px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; transition: 0.3s; }
         .btn-outline:hover { background: white; color: black; }
 
-        /* --- POPUP RESTAURADO (VERSIÓN LUJO) --- */
+        /* --- POPUP ÁREAS --- */
         #modalAreas { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
         .modal-body { background: var(--blanco); margin: 40px auto; padding: 60px 50px; width: 90%; max-width: 800px; color: #1a1a1a; position: relative; }
         .btn-cerrar { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: var(--dorado); }
-        
         .modal-header h4 { color: var(--dorado); letter-spacing: 4px; font-size: 0.75rem; margin-bottom: 10px; text-align: center; }
         .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.8rem; text-align: center; margin: 0; }
         .linea-dorada { width: 60px; height: 2px; background: var(--dorado); margin: 20px auto 40px auto; }
-
         .item-area { border-bottom: 1px solid #eee; }
         .titulo-area { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
         .titulo-area span { color: var(--dorado); font-size: 1.5rem; }
-        
         .contenido-area { max-height: 0; overflow: hidden; transition: all 0.4s ease-in-out; color: #666; font-size: 1rem; line-height: 1.6; }
 
-        /* WHATSAPP */
+        /* WHATSAPP FLOAT */
         .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
         @media (max-width: 992px) {
-            .nav-links, .btn-consulta-top { display: none; }
+            .nav-links { display: none; }
             .cta-container { flex-direction: column; width: 100%; }
         }
     </style>
@@ -103,7 +102,7 @@
         <a href="#">Expertice</a>
         <a href="#">Contacto</a>
     </div>
-    <a href="https://wa.me/59898145817" class="btn-consulta-top">Consulta Virtual</a>
+    <a href="mailto:dra.alisoncatelotti@gmail.com?subject=Consulta%20Legal%20-%20Estudio%20CMD" class="btn-consulta-top">Consulta Virtual</a>
 </nav>
 
 <div class="hero-bg">
@@ -126,31 +125,22 @@
             <h2>Áreas de Práctica</h2>
             <div class="linea-dorada"></div>
         </div>
-
         <div class="acordeon">
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
-                <div class="contenido-area">
-                    <p style="padding-bottom: 20px;">Defensa técnica en delitos económicos y responsabilidad empresarial. Atención prioritaria ante detenciones y urgencias 24 horas.</p>
-                </div>
+                <div class="contenido-area"><p style="padding-bottom: 20px;">Defensa técnica en delitos económicos y responsabilidad empresarial.</p></div>
             </div>
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
-                <div class="contenido-area">
-                    <p style="padding-bottom: 20px;">Asesoramiento integral en compraventas, hipotecas, arrendamientos y regularización de títulos de propiedad en Canelones.</p>
-                </div>
+                <div class="contenido-area"><p style="padding-bottom: 20px;">Asesoramiento integral en compraventas y regularización de títulos.</p></div>
             </div>
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">DERECHO CORPORATIVO <span>+</span></div>
-                <div class="contenido-area">
-                    <p style="padding-bottom: 20px;">Constitución de sociedades, redacción de contratos comerciales y asesoría legal preventiva para empresas y emprendedores locales.</p>
-                </div>
+                <div class="contenido-area"><p style="padding-bottom: 20px;">Constitución de sociedades y asesoría legal preventiva.</p></div>
             </div>
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">FAMILIA & SUCESIONES <span>+</span></div>
-                <div class="contenido-area">
-                    <p style="padding-bottom: 20px;">Divorcios, pensiones alimenticias, tenencia y sucesiones. Tramitación ágil con el enfoque humano que tu familia necesita.</p>
-                </div>
+                <div class="contenido-area"><p style="padding-bottom: 20px;">Divorcios, pensiones y tramitaciones sucesorias.</p></div>
             </div>
         </div>
     </div>
@@ -163,32 +153,22 @@
 <script>
     function mostrarModal() { document.getElementById("modalAreas").style.display = "block"; document.body.style.overflow = "hidden"; }
     function ocultarModal() { document.getElementById("modalAreas").style.display = "none"; document.body.style.overflow = "auto"; }
-
     function toggleArea(elemento) {
         const contenido = elemento.nextElementSibling;
         const icono = elemento.querySelector('span');
-        
         if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
-            contenido.style.maxHeight = "0px";
-            icono.textContent = "+";
-            elemento.style.color = "#1a1a1a";
+            contenido.style.maxHeight = "0px"; icono.textContent = "+"; elemento.style.color = "#1a1a1a";
         } else {
             document.querySelectorAll('.contenido-area').forEach(c => c.style.maxHeight = "0px");
             document.querySelectorAll('.titulo-area span').forEach(s => s.textContent = "+");
             document.querySelectorAll('.titulo-area').forEach(t => t.style.color = "#1a1a1a");
-
-            contenido.style.maxHeight = contenido.scrollHeight + "px";
-            icono.textContent = "−";
-            elemento.style.color = "#c5a044";
+            contenido.style.maxHeight = contenido.scrollHeight + "px"; icono.textContent = "−"; elemento.style.color = "#c5a044";
         }
     }
-
-    window.onclick = function(event) {
-        let modal = document.getElementById("modalAreas");
-        if (event.target == modal) { ocultarModal(); }
-    }
+    window.onclick = function(event) { if (event.target == document.getElementById("modalAreas")) { ocultarModal(); } }
 </script>
 
 </body>
 </html>
+
 
