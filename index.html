@@ -19,7 +19,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            scroll-behavior: smooth; /* Para que al clickear en el menú baje suavemente */
+            scroll-behavior: smooth;
         }
 
         body {
@@ -66,27 +66,68 @@
 
         nav ul li a:hover { color: var(--dorado); }
 
-        /* HERO */
+        /* SECCIÓN HERO (MODIFICADA) */
         .hero {
             height: 100vh;
-            background: linear-gradient(var(--negro-transparente), var(--negro-transparente)), 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                         url('Fondo.jpg') no-repeat center center/cover;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
             color: white;
+            padding: 0 20px;
+        }
+
+        .hero-content {
+            max-width: 800px;
         }
 
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            border-bottom: 2px solid var(--dorado);
-            display: inline-block;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
         }
 
-        /* SECCIÓN NUESTRO EQUIPO (El Acordeón) */
+        .hero-separator {
+            width: 100px;
+            height: 3px;
+            background-color: var(--dorado);
+            margin: 0 auto 25px;
+        }
+
+        .hero-content p {
+            font-size: 1.6rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
+
+        /* BOTÓN MEJORADO */
+        .btn-cta {
+            display: inline-block;
+            padding: 16px 45px;
+            background-color: var(--dorado);
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 50px; /* Bordes redondeados modernos */
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 2px solid var(--dorado);
+        }
+
+        .btn-cta:hover {
+            background-color: transparent;
+            color: var(--dorado);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        /* SECCIÓN EQUIPO */
         #nosotros {
             padding: 100px 10%;
             background-color: white;
@@ -111,9 +152,6 @@
             border-bottom: 1px solid #ddd;
             transition: 0.3s;
             cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
         .item-acc:hover {
@@ -124,11 +162,10 @@
         .nombre-equipo {
             font-size: 1.2rem;
             font-weight: 600;
-            letter-spacing: 1px;
             color: var(--gris-oxford);
         }
 
-        /* BOTÓN WHATSAPP */
+        /* WHATSAPP */
         .whatsapp-btn {
             position: fixed;
             bottom: 30px;
@@ -145,14 +182,20 @@
             z-index: 1000;
             text-decoration: none;
             box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
+            transition: 0.3s;
         }
+
+        .whatsapp-btn:hover { transform: scale(1.1); }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            header { flex-direction: column; padding: 15px; }
+            header { flex-direction: column; padding: 10px; }
             .logo img { height: 70px; }
-            nav ul { margin-top: 15px; }
-            .hero-content h1 { font-size: 2.2rem; }
+            nav ul { margin-top: 10px; }
+            nav ul li { margin: 0 10px; }
+            .hero-content h1 { font-size: 2.8rem; }
+            .hero-content p { font-size: 1.2rem; }
+            .btn-cta { padding: 12px 30px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -165,7 +208,8 @@
         <nav>
             <ul>
                 <li><a href="#">Inicio</a></li>
-                <li><a href="#nosotros">Nosotros</a></li> <li><a href="#">Áreas</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#">Áreas</a></li>
                 <li><a href="#">Contacto</a></li>
             </ul>
         </nav>
@@ -174,8 +218,9 @@
     <section class="hero">
         <div class="hero-content">
             <h1>CMD</h1>
+            <div class="hero-separator"></div>
             <p>Abogados especializados en Derecho Laboral y Civil.</p>
-            <a href="https://wa.me/59898145817" class="btn-cta">Consultar ahora</a>
+            <a href="mailto:tuemail@ejemplo.com?subject=Consulta%20Legal" class="btn-cta">Consultar ahora</a>
         </div>
     </section>
 
@@ -194,3 +239,4 @@
 
 </body>
 </html>
+
