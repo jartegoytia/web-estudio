@@ -20,7 +20,7 @@
             color: white; overflow-x: hidden;
         }
 
-        /* --- NAVBAR SUPERIOR --- */
+        /* --- NAVBAR --- */
         .navbar {
             position: absolute;
             top: 0; left: 0; width: 100%;
@@ -31,7 +31,6 @@
             background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
         }
 
-        .logo-box { display: flex; align-items: center; gap: 12px; }
         .logo-text { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 2px; line-height: 1.2; }
 
         .nav-links { display: flex; gap: 35px; }
@@ -42,14 +41,15 @@
         }
         .nav-links a:hover { color: var(--dorado); }
 
-        /* Estilo del botón de Correo */
-        .btn-consulta-top {
+        /* Botón de Correo Electrónico */
+        .btn-email-top {
             background: var(--dorado); color: var(--oscuro);
             padding: 12px 28px; text-decoration: none;
             font-weight: 700; text-transform: uppercase; font-size: 0.75rem;
             letter-spacing: 1px; transition: 0.3s;
+            cursor: pointer;
         }
-        .btn-consulta-top:hover { background: #b08d3a; }
+        .btn-email-top:hover { background: #b08d3a; }
 
         /* --- HERO --- */
         .hero-bg {
@@ -76,6 +76,7 @@
         .modal-header h4 { color: var(--dorado); letter-spacing: 4px; font-size: 0.75rem; margin-bottom: 10px; text-align: center; }
         .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.8rem; text-align: center; margin: 0; }
         .linea-dorada { width: 60px; height: 2px; background: var(--dorado); margin: 20px auto 40px auto; }
+        
         .item-area { border-bottom: 1px solid #eee; }
         .titulo-area { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
         .titulo-area span { color: var(--dorado); font-size: 1.5rem; }
@@ -102,7 +103,7 @@
         <a href="#">Expertice</a>
         <a href="#">Contacto</a>
     </div>
-    <a href="mailto:dra.alisoncatelotti@gmail.com?subject=Consulta%20Legal%20-%20Estudio%20CMD" class="btn-consulta-top">Consulta Virtual</a>
+    <a href="mailto:dra.alisoncatelotti@gmail.com" class="btn-email-top">Consulta Virtual</a>
 </nav>
 
 <div class="hero-bg">
@@ -128,7 +129,7 @@
         <div class="acordeon">
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
-                <div class="contenido-area"><p style="padding-bottom: 20px;">Defensa técnica en delitos económicos y responsabilidad empresarial.</p></div>
+                <div class="contenido-area"><p style="padding-bottom: 20px;">Defensa técnica en delitos económicos y responsabilidad empresarial. Atención 24hs.</p></div>
             </div>
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
@@ -140,7 +141,7 @@
             </div>
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">FAMILIA & SUCESIONES <span>+</span></div>
-                <div class="contenido-area"><p style="padding-bottom: 20px;">Divorcios, pensiones y tramitaciones sucesorias.</p></div>
+                <div class="contenido-area"><p style="padding-bottom: 20px;">Gestión de divorcios, pensiones y tramitaciones sucesorias.</p></div>
             </div>
         </div>
     </div>
@@ -153,16 +154,21 @@
 <script>
     function mostrarModal() { document.getElementById("modalAreas").style.display = "block"; document.body.style.overflow = "hidden"; }
     function ocultarModal() { document.getElementById("modalAreas").style.display = "none"; document.body.style.overflow = "auto"; }
+
     function toggleArea(elemento) {
         const contenido = elemento.nextElementSibling;
         const icono = elemento.querySelector('span');
         if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
-            contenido.style.maxHeight = "0px"; icono.textContent = "+"; elemento.style.color = "#1a1a1a";
+            contenido.style.maxHeight = "0px";
+            icono.textContent = "+";
+            elemento.style.color = "#1a1a1a";
         } else {
             document.querySelectorAll('.contenido-area').forEach(c => c.style.maxHeight = "0px");
             document.querySelectorAll('.titulo-area span').forEach(s => s.textContent = "+");
             document.querySelectorAll('.titulo-area').forEach(t => t.style.color = "#1a1a1a");
-            contenido.style.maxHeight = contenido.scrollHeight + "px"; icono.textContent = "−"; elemento.style.color = "#c5a044";
+            contenido.style.maxHeight = contenido.scrollHeight + "px";
+            icono.textContent = "−";
+            elemento.style.color = "#c5a044";
         }
     }
     window.onclick = function(event) { if (event.target == document.getElementById("modalAreas")) { ocultarModal(); } }
