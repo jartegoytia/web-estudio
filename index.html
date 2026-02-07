@@ -27,11 +27,11 @@
             var contenido = elemento.nextElementSibling;
             var icono = elemento.querySelector('span');
             
-            if (contenido && contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
+            if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
                 contenido.style.maxHeight = "0px";
-                icono.textContent = "+";
+                if(icono) icono.textContent = "+";
                 elemento.style.color = "#1a1a1a";
-            } else if (contenido) {
+            } else {
                 var parent = elemento.closest('.acordeon');
                 var todosContenidos = parent.querySelectorAll('.contenido-acc');
                 var todosIconos = parent.querySelectorAll('.titulo-acc span');
@@ -39,12 +39,12 @@
 
                 for(var i=0; i<todosContenidos.length; i++) {
                     todosContenidos[i].style.maxHeight = "0px";
-                    todosIconos[i].textContent = "+";
+                    if(todosIconos[i]) todosIconos[i].textContent = "+";
                     todosTitulos[i].style.color = "#1a1a1a";
                 }
 
                 contenido.style.maxHeight = contenido.scrollHeight + "px";
-                icono.textContent = "−";
+                if(icono) icono.textContent = "−";
                 elemento.style.color = "#c5a044";
             }
         }
@@ -77,36 +77,38 @@
         .subtitle { font-size: 1rem; color: #ccc; margin: 30px 0 40px; max-width: 600px; line-height: 1.6; }
 
         .cta-container { display: flex; gap: 20px; }
-        .btn-main { background: var(--dorado); color: var(--oscuro); padding: 18px 40px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
-        .btn-outline { border: 1px solid white; color: white; padding: 18px 40px; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; background: transparent; cursor: pointer; }
+        .btn-main { background: var(--dorado); color: var(--oscuro); padding: 18px 40px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; border: none; cursor: pointer; }
+        .btn-outline { border: 1px solid white; color: white; padding: 18px 40px; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; background: transparent; cursor: pointer; transition: 0.3s; }
+        .btn-outline:hover { background: white; color: black; }
 
         /* --- MODALES --- */
         .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
-        .modal-body { background: var(--blanco); margin: 5vh auto; padding: 50px; width: 90%; max-width: 700px; color: #111; position: relative; border-radius: 4px; }
-        .btn-cerrar { position: absolute; right: 20px; top: 10px; font-size: 40px; cursor: pointer; color: var(--dorado); }
+        .modal-body { background: var(--blanco); margin: 5vh auto; padding: 60px 50px; width: 90%; max-width: 800px; color: #111; position: relative; border-radius: 2px; }
+        .btn-cerrar { position: absolute; right: 25px; top: 15px; font-size: 40px; cursor: pointer; color: var(--dorado); line-height: 1; }
         
-        .modal-header { text-align: center; margin-bottom: 30px; }
-        .modal-header h4 { color: var(--dorado); font-size: 0.7rem; letter-spacing: 3px; margin: 0; }
-        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2rem; margin: 10px 0; border-bottom: 2px solid var(--dorado); display: inline-block; padding-bottom: 10px; }
+        .modal-header { text-align: center; margin-bottom: 40px; }
+        .modal-header h4 { color: var(--dorado); font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 10px; text-transform: uppercase; }
+        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.8rem; margin: 0; text-transform: uppercase; }
+        .linea-dorada { width: 60px; height: 2px; background: var(--dorado); margin: 20px auto 0 auto; }
 
-        .acordeon { text-align: left; }
-        .item-acc { border-bottom: 1px solid #ddd; }
+        .acordeon { text-align: left; border-top: 1px solid #eee; margin-top: 20px; }
+        .item-acc { border-bottom: 1px solid #eee; }
         
-        /* Estilo para nombres estáticos (Equipo) */
-        .nombre-estatico { padding: 25px 0; display: block; font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; color: #1a1a1a; }
+        /* Estilo para EQUIPO (Solo Texto) */
+        .nombre-equipo { padding: 30px 0; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; color: #1a1a1a; display: block; }
 
-        /* Estilo para acordeón (Áreas) */
-        .titulo-acc { padding: 20px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 700; text-transform: uppercase; }
-        .titulo-acc span { color: var(--dorado); font-size: 1.2rem; }
-        .contenido-acc { max-height: 0; overflow: hidden; transition: 0.3s ease-out; color: #555; font-size: 0.9rem; }
+        /* Estilo para ÁREAS (Acordeón) */
+        .titulo-acc { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
+        .titulo-acc span { color: var(--dorado); font-size: 1.5rem; }
+        .contenido-acc { max-height: 0; overflow: hidden; transition: 0.4s ease-in-out; color: #666; font-size: 1rem; line-height: 1.6; }
 
         /* WHATSAPP */
-        .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; }
+        .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .navbar { padding: 20px; }
-            .cta-container { flex-direction: column; width: 80%; }
+            .cta-container { flex-direction: column; width: 90%; }
+            .modal-header h2 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -139,16 +141,17 @@
         <div class="modal-header">
             <h4>NUESTRO STAFF</h4>
             <h2>El Equipo</h2>
+            <div class="linea-dorada"></div>
         </div>
         <div class="acordeon">
             <div class="item-acc">
-                <div class="nombre-estatico">Dra. Esc. Alison Catelotti</div>
+                <span class="nombre-equipo">Dra. Esc. Alison Catelotti</span>
             </div>
             <div class="item-acc">
-                <div class="nombre-estatico">Dra. Erika Martínez</div>
+                <span class="nombre-equipo">Dra. Erika Martínez</span>
             </div>
             <div class="item-acc">
-                <div class="nombre-estatico">Esc. Juan Manuel dos Santos</div>
+                <span class="nombre-equipo">Esc. Juan Manuel dos Santos</span>
             </div>
         </div>
     </div>
@@ -160,15 +163,24 @@
         <div class="modal-header">
             <h4>EXCELENCIA LEGAL</h4>
             <h2>Áreas de Práctica</h2>
+            <div class="linea-dorada"></div>
         </div>
         <div class="acordeon">
             <div class="item-acc">
-                <div class="titulo-acc" onclick="toggleAcc(this)">DERECHO PENAL <span>+</span></div>
-                <div class="contenido-acc"><p style="padding-bottom: 15px;">Defensa técnica y asesoramiento penal integral en delitos económicos y responsabilidad empresarial.</p></div>
+                <div class="titulo-acc" onclick="toggleAcc(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
+                <div class="contenido-acc"><p style="padding-bottom: 25px;">Defensa técnica en delitos económicos y responsabilidad empresarial. Atención prioritaria ante detenciones y urgencias 24 horas.</p></div>
             </div>
             <div class="item-acc">
-                <div class="titulo-acc" onclick="toggleAcc(this)">NOTARIADO <span>+</span></div>
-                <div class="contenido-acc"><p style="padding-bottom: 15px;">Compraventas, hipotecas, títulos y contratos notariales con seguridad jurídica garantizada.</p></div>
+                <div class="titulo-acc" onclick="toggleAcc(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
+                <div class="contenido-acc"><p style="padding-bottom: 25px;">Asesoramiento integral en compraventas, hipotecas y regularización de títulos.</p></div>
+            </div>
+            <div class="item-acc">
+                <div class="titulo-acc" onclick="toggleAcc(this)">DERECHO CORPORATIVO <span>+</span></div>
+                <div class="contenido-acc"><p style="padding-bottom: 25px;">Constitución de sociedades y asesoría legal preventiva para empresas.</p></div>
+            </div>
+            <div class="item-acc">
+                <div class="titulo-acc" onclick="toggleAcc(this)">FAMILIA & SUCESIONES <span>+</span></div>
+                <div class="contenido-acc"><p style="padding-bottom: 25px;">Gestión de divorcios, sucesiones y trámites familiares complejos.</p></div>
             </div>
         </div>
     </div>
@@ -180,6 +192,5 @@
 
 </body>
 </html>
-
 
 
