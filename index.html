@@ -1,134 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMD Estudio Jurídico Notarial</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <script>
-        function abrirModal(id) {
-            var modal = document.getElementById(id);
-            if(modal) {
-                modal.style.display = "block";
-                document.body.style.overflow = "hidden";
-            }
-        }
-
-        function cerrarModal(id) {
-            var modal = document.getElementById(id);
-            if(modal) {
-                modal.style.display = "none";
-                document.body.style.overflow = "auto";
-            }
-        }
-
-        function toggleAcc(elemento) {
-            var contenido = elemento.nextElementSibling;
-            var icono = elemento.querySelector('span');
-            
-            if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
-                contenido.style.maxHeight = "0px";
-                if(icono) icono.textContent = "+";
-                elemento.style.color = "#1a1a1a";
-            } else {
-                var parent = elemento.closest('.acordeon');
-                var todosContenidos = parent.querySelectorAll('.contenido-acc');
-                var todosIconos = parent.querySelectorAll('.titulo-acc span');
-                var todosTitulos = parent.querySelectorAll('.titulo-acc');
-
-                for(var i=0; i<todosContenidos.length; i++) {
-                    todosContenidos[i].style.maxHeight = "0px";
-                    if(todosIconos[i]) todosIconos[i].textContent = "+";
-                    todosTitulos[i].style.color = "#1a1a1a";
-                }
-
-                contenido.style.maxHeight = contenido.scrollHeight + "px";
-                if(icono) icono.textContent = "−";
-                elemento.style.color = "#c5a044";
-            }
-        }
-    </script>
-
-    <style>
-        :root {
-            --dorado: #c5a044;
-            --oscuro: #0a0a0a;
-            --blanco: #ffffff;
-            --overlay: rgba(0, 0, 0, 0.8);
-        }
-
-        body, html { margin: 0; padding: 0; height: 100%; font-family: 'Montserrat', sans-serif; background-color: var(--oscuro); color: white; overflow-x: hidden; }
-
-        /* --- NAVBAR --- */
-        .navbar { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; box-sizing: border-box; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%); }
-        
-        /* Contenedor del Logo */
-        .logo-container {
-            display: flex;
-            align-items: center;
-            height: 80px; /* Espacio reservado para el logo */
-        }
-
-        .logo-img {
-            height: 100%; /* Ajusta al alto del contenedor */
-            width: auto;
-            display: block;
-            object-fit: contain;
-        }
-        
-        .nav-links { display: flex; gap: 35px; align-items: center; }
-        .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; cursor: pointer; transition: 0.3s; }
-        .nav-links a:hover { color: var(--dorado); }
-
-        .btn-consulta-top { background: var(--dorado); color: var(--oscuro); padding: 12px 28px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; transition: 0.3s; }
-        .btn-consulta-top:hover { background: #b08d3a; }
-
-        /* --- HERO --- */
-        .hero-bg { background-image: linear-gradient(var(--overlay), var(--overlay)), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1600'); background-size: cover; background-position: center; height: 100vh; display: flex; flex-direction: column; justify-content: center; }
-        .hero-content { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; margin-top: 50px; }
-        .sede-tag { border: 1px solid var(--dorado); color: var(--dorado); padding: 8px 30px; font-size: 0.7rem; letter-spacing: 4px; margin-bottom: 30px; text-transform: uppercase; }
-        h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--dorado); margin: 0; line-height: 1.1; text-transform: uppercase; }
-        .subtitle { font-size: 1.1rem; max-width: 750px; margin: 30px 0 40px 0; font-weight: 300; color: #d1d1d1; line-height: 1.6; }
-
-        .cta-container { display: flex; gap: 20px; }
-        .btn-main { background: var(--dorado); color: var(--oscuro); padding: 20px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none; cursor: pointer; }
-        
-        .btn-outline { border: 1px solid white; color: white; padding: 20px 45px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; transition: 0.3s; }
-        .btn-outline:hover { background: white; color: black; }
-
-        /* --- MODALES --- */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
-        .modal-body { background: var(--blanco); margin: 40px auto; padding: 60px 50px; width: 90%; max-width: 800px; color: #1a1a1a; position: relative; }
-        .btn-cerrar { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: var(--dorado); line-height: 1; }
-        
-        .modal-header { text-align: center; margin-bottom: 40px; }
-        .modal-header h4 { color: var(--dorado); font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 10px; text-transform: uppercase; }
-        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.8rem; margin: 0; }
-        .linea-dorada { width: 60px; height: 2px; background: var(--dorado); margin: 20px auto 0 auto; }
-
-        .acordeon { text-align: left; border-top: 1px solid #eee; margin-top: 20px; }
-        .item-acc { border-bottom: 1px solid #eee; }
-        
-        .nombre-equipo { padding: 30px 0; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; color: #1a1a1a; display: block; }
-
-        .titulo-acc { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
-        .titulo-acc span { color: var(--dorado); font-size: 1.5rem; }
-        .contenido-acc { max-height: 0; overflow: hidden; transition: 0.4s ease-in-out; color: #666; font-size: 1rem; line-height: 1.6; }
-
-        .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-
-        @media (max-width: 992px) {
-            .nav-links { display: none; }
-            .cta-container { flex-direction: column; width: 100%; }
-        }
-    </style>
-</head>
-<body>
-
 <nav class="navbar">
     <div class="logo-container">
-        <img src="LOGO.jpg" alt="Logo CMD" class="logo-img">
+        <img src="LOGO.jpg" alt="CMD Estudio Jurídico" class="logo-img" onerror="this.style.display='none'">
     </div>
     <div class="nav-links">
         <a href="javascript:void(0)">Inicio</a>
@@ -139,68 +11,21 @@
     <a href="mailto:dra.alisoncatelotti@gmail.com" class="btn-consulta-top">Consulta Virtual</a>
 </nav>
 
-<div class="hero-bg">
-    <div class="hero-content">
-        <div class="sede-tag">Montevideo</div>
-        <h1>Defensa Estratégica.<br>Soluciones Reales.</h1>
-        <p class="subtitle">Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>Representación de alto nivel con seguridad jurídica garantizada.</p>
-        <div class="cta-container">
-            <a href="https://wa.me/59898145817" class="btn-main">Iniciar Evaluación</a>
-            <button class="btn-outline" onclick="abrirModal('modalAreas')">Ver Áreas</button>
-        </div>
-    </div>
-</div>
+<style>
+    /* Estilos específicos para que el logo se vea perfecto */
+    .logo-container {
+        display: flex;
+        align-items: center;
+        height: 80px; /* Ajusta la altura de la barra */
+    }
+    .logo-img {
+        height: 100%; /* El logo usará todo el alto disponible */
+        width: auto;
+        display: block;
+        object-fit: contain;
+    }
+    /* ... (mantén el resto de tus estilos iguales) ... */
+</style>
 
-<div id="modalEquipo" class="modal" onclick="if(event.target==this) cerrarModal('modalEquipo')">
-    <div class="modal-body">
-        <span class="btn-cerrar" onclick="cerrarModal('modalEquipo')">&times;</span>
-        <div class="modal-header">
-            <h4>NUESTRO STAFF</h4>
-            <h2>El Equipo</h2>
-            <div class="linea-dorada"></div>
-        </div>
-        <div class="acordeon">
-            <div class="item-acc"><span class="nombre-equipo">Dra. Esc. Alison Catelotti</span></div>
-            <div class="item-acc"><span class="nombre-equipo">Dra. Erika Martínez</span></div>
-            <div class="item-acc"><span class="nombre-equipo">Esc. Juan Manuel dos Santos</span></div>
-        </div>
-    </div>
-</div>
-
-<div id="modalAreas" class="modal" onclick="if(event.target==this) cerrarModal('modalAreas')">
-    <div class="modal-body">
-        <span class="btn-cerrar" onclick="cerrarModal('modalAreas')">&times;</span>
-        <div class="modal-header">
-            <h4>EXCELENCIA LEGAL</h4>
-            <h2>Áreas de Práctica</h2>
-            <div class="linea-dorada"></div>
-        </div>
-        <div class="acordeon">
-            <div class="item-acc">
-                <div class="titulo-acc" onclick="toggleAcc(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
-                <div class="contenido-acc"><p style="padding-bottom: 25px;">Defensa técnica en delitos económicos y responsabilidad empresarial. Atención prioritaria ante detenciones y urgencias 24 horas.</p></div>
-            </div>
-            <div class="item-acc">
-                <div class="titulo-acc" onclick="toggleAcc(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
-                <div class="contenido-acc"><p style="padding-bottom: 25px;">Asesoramiento integral en compraventas, hipotecas y regularización de títulos.</p></div>
-            </div>
-            <div class="item-acc">
-                <div class="titulo-acc" onclick="toggleAcc(this)">DERECHO CORPORATIVO <span>+</span></div>
-                <div class="contenido-acc"><p style="padding-bottom: 25px;">Constitución de sociedades y asesoría legal preventiva.</p></div>
-            </div>
-            <div class="item-acc">
-                <div class="titulo-acc" onclick="toggleAcc(this)">FAMILIA & SUCESIONES <span>+</span></div>
-                <div class="contenido-acc"><p style="padding-bottom: 25px;">Gestión de divorcios, sucesiones y trámites familiares.</p></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<a href="https://wa.me/59898145817" class="wp-btn" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30">
-</a>
-
-</body>
-</html>
 
 
