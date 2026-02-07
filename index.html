@@ -20,133 +20,96 @@
             color: white; overflow-x: hidden;
         }
 
-        /* --- ESTÉTICA ANTERIOR (HERO) --- */
+        /* --- BARRA DE NAVEGACIÓN SUPERIOR --- */
+        header {
+            position: absolute;
+            top: 0; left: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 50px;
+            box-sizing: border-box;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 15px; }
+        .logo-icon { width: 40px; height: auto; filter: sepia(1) saturate(5) hue-rotate(10deg); }
+        .logo-text { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 2px; line-height: 1.2; }
+
+        .nav-menu { display: flex; gap: 30px; }
+        .nav-menu a {
+            color: white; text-decoration: none; text-transform: uppercase;
+            font-size: 0.75rem; letter-spacing: 2px; font-weight: 400;
+            transition: 0.3s;
+        }
+        .nav-menu a:hover { color: var(--dorado); }
+
+        .btn-consulta-top {
+            background: var(--dorado); color: var(--oscuro);
+            padding: 12px 25px; text-decoration: none;
+            font-weight: 700; text-transform: uppercase; font-size: 0.75rem;
+            letter-spacing: 1px; transition: 0.3s;
+        }
+        .btn-consulta-top:hover { opacity: 0.9; }
+
+        /* --- SECCIÓN HERO --- */
         .hero-bg {
             background-image: linear-gradient(var(--overlay), var(--overlay)), 
                               url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1600'); 
             background-size: cover; background-position: center;
-            height: 100vh; display: flex; flex-direction: column;
+            height: 100vh; display: flex; flex-direction: column; justify-content: center;
         }
 
-        nav { display: flex; justify-content: space-between; align-items: center; padding: 25px 50px; }
-        
-        .logo { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 2px; line-height: 1.2; }
-        
-        .btn-consulta-top { 
-            background: var(--dorado); color: var(--oscuro); padding: 12px 25px; 
-            font-weight: 700; text-transform: uppercase; font-size: 0.75rem; 
-            text-decoration: none; letter-spacing: 1px;
-        }
-
-        .hero-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
-        
-        .sede-tag { 
-            border: 1px solid var(--dorado); color: var(--dorado); 
-            padding: 8px 30px; font-size: 0.7rem; letter-spacing: 4px; 
-            margin-bottom: 35px; text-transform: uppercase; 
-        }
-
-        h1 { 
-            font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); 
-            color: var(--dorado); margin: 0; line-height: 1.1; text-transform: uppercase; 
-        }
-
-        .subtitle { 
-            font-size: 1.1rem; max-width: 750px; margin: 30px 0 45px 0; 
-            font-weight: 300; color: #d1d1d1; line-height: 1.6;
-        }
+        .hero-content { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; }
+        .sede-tag { border: 1px solid var(--dorado); color: var(--dorado); padding: 8px 30px; font-size: 0.7rem; letter-spacing: 4px; margin-bottom: 35px; text-transform: uppercase; }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--dorado); margin: 0; line-height: 1.1; text-transform: uppercase; }
+        .subtitle { font-size: 1.1rem; max-width: 750px; margin: 30px 0 45px 0; font-weight: 300; color: #d1d1d1; line-height: 1.6; }
 
         .cta-container { display: flex; gap: 20px; }
+        .btn-main { background: var(--dorado); color: var(--oscuro); padding: 20px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none; cursor: pointer; }
+        .btn-outline { border: 1px solid white; color: white; padding: 20px 45px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; }
+
+        /* --- POPUP DE ÁREAS --- */
+        #modalAreas { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
+        .modal-body { background: var(--blanco); margin: 50px auto; padding: 60px 50px; width: 90%; max-width: 800px; color: #1a1a1a; position: relative; }
+        .btn-cerrar { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: var(--dorado); }
+        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; text-align: center; margin-bottom: 40px; }
         
-        .btn-main { 
-            background: var(--dorado); color: var(--oscuro); padding: 20px 45px; 
-            text-decoration: none; font-weight: 700; text-transform: uppercase; 
-            font-size: 0.9rem; border: none; cursor: pointer; transition: 0.3s;
-        }
-
-        .btn-outline { 
-            border: 1px solid white; color: white; padding: 20px 45px; 
-            text-decoration: none; text-transform: uppercase; font-size: 0.9rem; 
-            background: transparent; cursor: pointer; transition: 0.3s;
-        }
-        .btn-outline:hover { background: white; color: black; }
-
-        /* --- POPUP (ESTILO ÁREAS DE PRÁCTICA) --- */
-        #modalAreas {
-            display: none; position: fixed; z-index: 9999; left: 0; top: 0;
-            width: 100%; height: 100%; background-color: rgba(0,0,0,0.95);
-            overflow-y: auto;
-        }
-
-        .modal-body {
-            background-color: var(--blanco); margin: 40px auto; padding: 60px 50px;
-            width: 90%; max-width: 850px; color: #1a1a1a; position: relative;
-        }
-
-        .btn-cerrar {
-            position: absolute; right: 25px; top: 15px;
-            font-size: 35px; cursor: pointer; color: var(--dorado);
-        }
-
-        .modal-header h4 { color: var(--dorado); letter-spacing: 4px; font-size: 0.75rem; margin-bottom: 10px; text-align: center; }
-        .modal-header h2 { 
-            font-family: 'Cinzel', serif; font-size: 2.8rem; margin: 0 auto; 
-            text-align: center; padding-bottom: 15px; 
-        }
-        .linea-dorada { width: 60px; height: 2px; background: var(--dorado); margin: 0 auto 50px auto; }
-
-        /* ACORDEÓN INTERNO */
-        .acordeon { border-top: 1px solid #eee; }
         .item-area { border-bottom: 1px solid #eee; }
-        .titulo-area {
-            padding: 30px 0; cursor: pointer; display: flex;
-            justify-content: space-between; align-items: center;
-            font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700;
-            text-transform: uppercase; transition: 0.3s;
-        }
-        .titulo-area span { color: var(--dorado); font-size: 1.6rem; font-weight: 300; }
-        
-        .contenido-area {
-            max-height: 0; overflow: hidden; transition: all 0.4s ease-in-out;
-            color: #666; font-size: 1rem; line-height: 1.7;
-        }
+        .titulo-area { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; }
+        .contenido-area { max-height: 0; overflow: hidden; transition: 0.4s; color: #666; }
 
         /* WHATSAPP */
-        .wp-btn { 
-            position: fixed; bottom: 30px; right: 30px; background: #25d366; 
-            width: 65px; height: 65px; border-radius: 50%; display: flex; 
-            justify-content: center; align-items: center; z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
+        .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; }
 
-        @media (max-width: 768px) {
-            nav { padding: 20px; }
-            .btn-consulta-top { display: none; }
-            .cta-container { flex-direction: column; width: 100%; }
+        @media (max-width: 992px) {
+            header { padding: 20px; }
+            .nav-menu { display: none; } /* Oculto en móvil por espacio */
         }
     </style>
 </head>
 <body>
 
-<div class="hero-bg">
-    <nav>
-        <div class="logo">
-            ESTUDIO JURÍDICO<br>
-            <span style="color: var(--dorado); font-size: 0.8rem;">Y NOTARIAL</span>
-        </div>
-        <a href="https://wa.me/59898145817" class="btn-consulta-top">Consulta Virtual</a>
+<header>
+    <div class="logo-container">
+        <img src="https://cdn-icons-png.flaticon.com/512/3252/3252750.png" class="logo-icon" alt="Logo">
+        <div class="logo-text">ESTUDIO JURÍDICO<br><span style="color: var(--dorado); font-size: 0.7rem;">Y NOTARIAL</span></div>
+    </div>
+    <nav class="nav-menu">
+        <a href="#">Inicio</a>
+        <a href="#">Sobre nosotros</a>
+        <a href="#">Expertise</a>
+        <a href="#">Contacto</a>
     </nav>
+    <a href="https://wa.me/59898145817" class="btn-consulta-top">Consulta Virtual</a>
+</header>
 
+<div class="hero-bg">
     <div class="hero-content">
         <div class="sede-tag">Sede Pando & Canelones</div>
         <h1>Defensa Estratégica.<br>Soluciones Reales.</h1>
-        <p class="subtitle">
-            Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>
-            Representación de alto nivel con seguridad jurídica garantizada.
-        </p>
-        
+        <p class="subtitle">Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>Representación de alto nivel con seguridad jurídica garantizada.</p>
         <div class="cta-container">
-            <a href="https://wa.me/59898145817?text=Hola,%20deseo%20iniciar%20una%20evaluación." class="btn-main">Iniciar Evaluación</a>
+            <a href="https://wa.me/59898145817" class="btn-main">Iniciar Evaluación</a>
             <button class="btn-outline" onclick="mostrarModal()">Ver Áreas</button>
         </div>
     </div>
@@ -156,92 +119,38 @@
     <div class="modal-body">
         <span class="btn-cerrar" onclick="ocultarModal()">&times;</span>
         <div class="modal-header">
-            <h4>EXCELENCIA LEGAL</h4>
-            <h2>Áreas de Práctica</h2>
-            <div class="linea-dorada"></div>
+            <h2 style="text-align: center;">Áreas de Práctica</h2>
         </div>
-
         <div class="acordeon">
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
-                <div class="contenido-area">
-                    <p style="padding-bottom: 20px;">Defensa técnica en delitos económicos y responsabilidad empresarial. Atención prioritaria ante detenciones y urgencias 24 horas.</p>
-                </div>
+                <div class="contenido-area"><p>Defensa técnica en delitos económicos y responsabilidad empresarial.</p></div>
             </div>
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
-                <div class="contenido-area">
-                    <p style="padding-bottom: 20px;">Asesoramiento integral en compraventas, hipotecas, arrendamientos y regularización de títulos de propiedad en Canelones.</p>
-                </div>
-            </div>
-            <div class="item-area">
-                <div class="titulo-area" onclick="toggleArea(this)">DERECHO CORPORATIVO <span>+</span></div>
-                <div class="contenido-area">
-                    <p style="padding-bottom: 20px;">Constitución de sociedades, redacción de contratos comerciales y asesoría legal preventiva para empresas y startups.</p>
-                </div>
-            </div>
-            <div class="item-area">
-                <div class="titulo-area" onclick="toggleArea(this)">FAMILIA & SUCESIONES <span>+</span></div>
-                <div class="contenido-area">
-                    <p style="padding-bottom: 20px;">Gestión de divorcios, pensiones, tenencia y sucesiones. Tratamiento reservado y profesional de sus asuntos familiares.</p>
-                </div>
+                <div class="contenido-area"><p>Asesoramiento integral en compraventas y regularización de títulos.</p></div>
             </div>
         </div>
     </div>
 </div>
 
 <a href="https://wa.me/59898145817" class="wp-btn" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="35" alt="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30">
 </a>
 
 <script>
-    // Mostrar/Ocultar Modal
-    function mostrarModal() {
-        document.getElementById("modalAreas").style.display = "block";
-        document.body.style.overflow = "hidden";
-    }
-
-    function ocultarModal() {
-        document.getElementById("modalAreas").style.display = "none";
-        document.body.style.overflow = "auto";
-    }
-
-    // Acordeón funcional
+    function mostrarModal() { document.getElementById("modalAreas").style.display = "block"; document.body.style.overflow = "hidden"; }
+    function ocultarModal() { document.getElementById("modalAreas").style.display = "none"; document.body.style.overflow = "auto"; }
     function toggleArea(elemento) {
         const contenido = elemento.nextElementSibling;
         const icono = elemento.querySelector('span');
-        
-        // Si ya está abierto, lo cerramos
         if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
-            contenido.style.maxHeight = "0px";
-            icono.textContent = "+";
-            elemento.style.color = "#1a1a1a";
+            contenido.style.maxHeight = "0px"; icono.textContent = "+";
         } else {
-            // Cerramos todos los demás primero
-            document.querySelectorAll('.contenido-area').forEach(c => c.style.maxHeight = "0px");
-            document.querySelectorAll('.titulo-area span').forEach(s => s.textContent = "+");
-            document.querySelectorAll('.titulo-area').forEach(t => t.style.color = "#1a1a1a");
-
-            // Abrimos el actual
-            contenido.style.maxHeight = contenido.scrollHeight + "px";
-            icono.textContent = "−";
-            elemento.style.color = "#c5a044";
+            contenido.style.maxHeight = contenido.scrollHeight + "px"; icono.textContent = "−";
         }
-    }
-
-    // Cerrar al hacer clic fuera
-    window.onclick = function(event) {
-        let modal = document.getElementById("modalAreas");
-        if (event.target == modal) { ocultarModal(); }
     }
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
-
