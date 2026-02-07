@@ -9,154 +9,84 @@
         :root {
             --dorado: #c5a044;
             --oscuro: #0a0a0a;
-            --overlay: rgba(0, 0, 0, 0.8);
+            --overlay: rgba(0, 0, 0, 0.85);
         }
 
         body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
+            margin: 0; padding: 0; height: 100%;
             font-family: 'Montserrat', sans-serif;
             background-color: var(--oscuro);
-            color: white;
-            scroll-behavior: smooth;
+            color: white; overflow-x: hidden;
         }
 
+        /* --- SECCIÓN PRINCIPAL (HERO) --- */
         .hero-bg {
             background-image: linear-gradient(var(--overlay), var(--overlay)), 
-                              url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1600'); 
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
+                              url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600'); 
+            background-size: cover; background-position: center;
+            height: 100vh; display: flex; flex-direction: column;
         }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 50px;
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; }
+        .logo { font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 1px; }
+        .btn-consulta { background: var(--dorado); color: var(--oscuro); padding: 12px 24px; font-weight: bold; text-transform: uppercase; font-size: 0.75rem; text-decoration: none; }
+
+        .hero-content { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 20px; }
+        .sede-tag { border: 1px solid var(--dorado); color: var(--dorado); padding: 6px 25px; font-size: 0.65rem; letter-spacing: 4px; margin-bottom: 30px; text-transform: uppercase; }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 4rem); color: var(--dorado); margin: 0; line-height: 1.2; text-transform: uppercase; }
+        .subtitle { font-size: 1.1rem; max-width: 700px; margin: 25px 0 40px 0; font-weight: 300; color: #ccc; }
+
+        .cta-container { display: flex; gap: 20px; }
+        .btn-main { background: var(--dorado); color: var(--oscuro); padding: 18px 40px; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; border: none; cursor: pointer; }
+        .btn-outline { border: 1px solid white; color: white; padding: 18px 40px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; }
+
+        /* --- POPUP DE ÁREAS DE PRÁCTICA --- */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0;
+            width: 100%; height: 100%; background-color: rgba(0,0,0,0.9);
+            overflow-y: auto;
         }
 
-        .logo {
-            font-family: 'Cinzel', serif;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            line-height: 1.2;
+        .modal-content {
+            background-color: white; margin: 5% auto; padding: 40px;
+            width: 80%; max-width: 800px; color: #333; text-align: center;
+            position: relative; border-radius: 4px;
         }
 
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+        .close-modal {
+            position: absolute; right: 20px; top: 10px;
+            font-size: 30px; cursor: pointer; color: var(--dorado);
         }
 
-        .nav-links a {
-            text-decoration: none;
-            color: white;
+        .modal-header h4 { color: var(--dorado); letter-spacing: 3px; font-size: 0.8rem; margin-bottom: 10px; }
+        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; margin-top: 0; }
+
+        /* Acordeón */
+        .accordion { border-top: 1px solid #eee; margin-top: 30px; text-align: left; }
+        .acc-item { border-bottom: 1px solid #eee; }
+        .acc-header {
+            padding: 20px 0; cursor: pointer; display: flex;
+            justify-content: space-between; align-items: center;
+            font-family: 'Cinzel', serif; font-size: 1.1rem; color: #222;
             transition: 0.3s;
         }
-
-        .nav-links a:hover { color: var(--dorado); }
-
-        .btn-consulta {
-            background-color: var(--dorado);
-            color: var(--oscuro);
-            padding: 12px 24px;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            text-decoration: none;
+        .acc-header:hover { color: var(--dorado); }
+        .acc-header span { color: var(--dorado); font-size: 1.5rem; }
+        .acc-content {
+            max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out;
+            background: #f9f9f9; padding: 0 20px; color: #666; font-size: 0.95rem;
         }
 
-        .hero-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .sede-tag {
-            border: 1px solid var(--dorado);
-            color: var(--dorado);
-            padding: 6px 25px;
-            font-size: 0.65rem;
-            letter-spacing: 4px;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(2rem, 5vw, 4rem);
-            color: var(--dorado);
-            margin: 0;
-            line-height: 1.2;
-            text-transform: uppercase;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            max-width: 700px;
-            margin: 25px 0 40px 0;
-            font-weight: 300;
-            line-height: 1.6;
-            color: #ccc;
-        }
-
-        .cta-container {
-            display: flex;
-            gap: 20px;
-        }
-
-        .btn-main {
-            background-color: var(--dorado);
-            color: var(--oscuro);
-            padding: 18px 40px;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-
-        .btn-outline {
-            border: 1px solid rgba(255,255,255,0.5);
-            color: white;
-            padding: 18px 40px;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-        }
-
-        /* Botón WhatsApp corregido */
+        /* WhatsApp */
         .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            z-index: 100;
-            transition: transform 0.3s;
+            position: fixed; bottom: 30px; right: 30px; background: #25d366;
+            width: 60px; height: 60px; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; z-index: 100;
         }
-
-        .whatsapp-float:hover { transform: scale(1.1); }
 
         @media (max-width: 768px) {
-            nav { padding: 20px; }
             .nav-links, .btn-consulta { display: none; }
-            .cta-container { flex-direction: column; width: 80%; }
+            .cta-container { flex-direction: column; width: 100%; }
         }
     </style>
 </head>
@@ -164,40 +94,93 @@
 
 <div class="hero-bg">
     <nav>
-        <div class="logo">
-            ESTUDIO JURÍDICO<br>
-            <span style="color: var(--dorado); font-size: 0.8rem;">Y NOTARIAL</span>
-        </div>
-        <div class="nav-links">
-            <a href="#">Inicio</a>
-            <a href="#">Expertise</a>
-            <a href="#">Admisión</a>
-            <a href="#">Contacto</a>
-        </div>
+        <div class="logo">CMD <span style="color: var(--dorado);">ESTUDIO JURÍDICO</span></div>
         <a href="https://wa.me/59898145817" class="btn-consulta">Consulta Virtual</a>
     </nav>
 
     <div class="hero-content">
         <div class="sede-tag">Sede Pando & Canelones</div>
         <h1>Defensa Estratégica.<br>Soluciones Reales.</h1>
-        <p class="subtitle">
-            Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>
-            Representación de alto nivel con seguridad jurídica garantizada.
-        </p>
+        <p class="subtitle">Abogados especializados en Derecho Penal, Administrativo y Corporativo.</p>
         
         <div class="cta-container">
-            <a href="https://wa.me/59898145817?text=Hola,%20solicito%20una%20evaluación%20de%20mi%20caso." class="btn-main">Iniciar Evaluación</a>
-            <a href="#" class="btn-outline">Ver Áreas</a>
+            <a href="https://wa.me/59898145817" class="btn-main">Iniciar Evaluación</a>
+            <button class="btn-outline" onclick="openModal()">Ver Áreas</button>
         </div>
     </div>
 </div>
 
-<a href="https://wa.me/59898145817?text=Hola,%20vengo%20de%20la%20web%20y%20necesito%20una%20consulta." class="whatsapp-float" target="_blank">
+<div id="areasModal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-header">
+            <h4>EXCELENCIA LEGAL</h4>
+            <h2>Áreas de Práctica</h2>
+            <div style="width: 50px; height: 2px; background: var(--dorado); margin: 20px auto;"></div>
+        </div>
+
+        <div class="accordion">
+            <div class="acc-item">
+                <div class="acc-header" onclick="toggleAcc(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
+                <div class="acc-content">
+                    <p>Defensa técnica en delitos económicos y responsabilidad empresarial. Atención prioritaria ante detenciones y urgencias 24 horas.</p>
+                </div>
+            </div>
+            <div class="acc-item">
+                <div class="acc-header" onclick="toggleAcc(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
+                <div class="acc-content">
+                    <p>Asesoramiento integral en compraventas, hipotecas, arrendamientos y regularización de títulos de propiedad.</p>
+                </div>
+            </div>
+            <div class="acc-item">
+                <div class="acc-header" onclick="toggleAcc(this)">DERECHO CORPORATIVO <span>+</span></div>
+                <div class="acc-content">
+                    <p>Constitución de sociedades, redacción de contratos comerciales y asesoría legal permanente para empresas.</p>
+                </div>
+            </div>
+            <div class="acc-item">
+                <div class="acc-header" onclick="toggleAcc(this)">FAMILIA & SUCESIONES <span>+</span></div>
+                <div class="acc-content">
+                    <p>Gestión de divorcios, pensiones alimenticias, tenencia y tramitación de sucesiones de forma ágil y reservada.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<a href="https://wa.me/59898145817" class="whatsapp-float" target="_blank">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" alt="WhatsApp">
 </a>
 
+<script>
+    function openModal() { document.getElementById("areasModal").style.display = "block"; }
+    function closeModal() { document.getElementById("areasModal").style.display = "none"; }
+
+    function toggleAcc(header) {
+        const content = header.nextElementSibling;
+        const icon = header.querySelector('span');
+        
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+            icon.textContent = "+";
+            content.style.padding = "0 20px";
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+            icon.textContent = "×";
+            content.style.padding = "20px";
+        }
+    }
+
+    // Cerrar si hace clic fuera del cuadro blanco
+    window.onclick = function(event) {
+        let modal = document.getElementById("areasModal");
+        if (event.target == modal) { closeModal(); }
+    }
+</script>
+
 </body>
 </html>
+
 
 
 
