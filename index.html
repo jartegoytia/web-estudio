@@ -116,21 +116,7 @@
             justify-content: center;
             align-items: center;
         }
-    
-        .acordeon .item { border-bottom:1px solid #333; padding:20px 0; }
-        .acordeon h3 { cursor:pointer; display:flex; justify-content:space-between; }
-        .acordeon .contenido { display:none; color:#ccc; margin-top:10px; }
     </style>
-
-    <script>
-      function abrirModal(){ document.getElementById('modal-areas').style.display='block'; }
-      function cerrarModal(){ document.getElementById('modal-areas').style.display='none'; }
-      function toggle(el){
-        const p = el.nextElementSibling;
-        document.querySelectorAll('.acordeon .contenido').forEach(c=>{ if(c!==p) c.style.display='none'; });
-        p.style.display = p.style.display==='block' ? 'none' : 'block';
-      }
-    </script>
 </head>
 <body>
 
@@ -149,40 +135,10 @@
         <p>Especialistas en Derecho Civil, Comercial y Notarial en Montevideo.</p>
         <div class="cta">
             <a href="#contacto" class="btn-main">Consultar ahora</a>
-            <a href="javascript:abrirModal()" class="btn-outline">Ver Áreas de Práctica</a>
+            <a href="#servicios" class="btn-outline">Ver servicios</a>
         </div>
     </div>
 </header>
-
-<!-- MODAL ÁREAS DE PRÁCTICA -->
-<div id="modal-areas" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.85); z-index:999; overflow:auto;">
-  <div style="max-width:900px; margin:80px auto; background:#111; padding:50px; color:white;">
-    <button onclick="cerrarModal()" style="float:right; background:none; border:none; color:#c5a044; font-size:24px; cursor:pointer">×</button>
-    <h2 style="text-align:center">Áreas de Práctica</h2>
-
-    <div class="acordeon">
-      <div class="item">
-        <h3 onclick="toggle(this)">Derecho Penal & Compliance</h3>
-        <p class="contenido">Defensa técnica en delitos económicos y responsabilidad penal empresarial. Atención prioritaria ante detenciones y urgencias las 24 horas.</p>
-      </div>
-
-      <div class="item">
-        <h3 onclick="toggle(this)">Notariado & Real Estate</h3>
-        <p class="contenido">Asesoramiento notarial integral en operaciones inmobiliarias, compraventas, escrituras y certificaciones.</p>
-      </div>
-
-      <div class="item">
-        <h3 onclick="toggle(this)">Derecho Corporativo</h3>
-        <p class="contenido">Constitución de sociedades, asesoramiento empresarial, contratos comerciales y cumplimiento normativo.</p>
-      </div>
-
-      <div class="item">
-        <h3 onclick="toggle(this)">Familia & Sucesiones</h3>
-        <p class="contenido">Divorcios, régimen de visitas, herencias y planificación patrimonial con enfoque humano y estratégico.</p>
-      </div>
-    </div>
-  </div>
-</div>
 
 <section id="servicios">
     <h2>Áreas de práctica</h2>
@@ -227,7 +183,5 @@
 
 </body>
 </html>
-
-
 
 
