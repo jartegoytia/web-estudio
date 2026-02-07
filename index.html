@@ -20,7 +20,7 @@
             color: white; overflow-x: hidden;
         }
 
-        /* --- BARRA DE NAVEGACIÓN (NAVBAR) --- */
+        /* --- NAVBAR SUPERIOR --- */
         .navbar {
             position: absolute;
             top: 0; left: 0; width: 100%;
@@ -28,11 +28,10 @@
             padding: 25px 50px;
             box-sizing: border-box;
             z-index: 1000;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
         }
 
         .logo-box { display: flex; align-items: center; gap: 12px; }
-        .logo-icon { width: 35px; filter: sepia(1) saturate(5) brightness(0.8); }
         .logo-text { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 2px; line-height: 1.2; }
 
         .nav-links { display: flex; gap: 35px; }
@@ -50,7 +49,7 @@
             letter-spacing: 1px;
         }
 
-        /* --- SECCIÓN HERO --- */
+        /* --- HERO --- */
         .hero-bg {
             background-image: linear-gradient(var(--overlay), var(--overlay)), 
                               url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1600'); 
@@ -58,31 +57,37 @@
             height: 100vh; display: flex; flex-direction: column; justify-content: center;
         }
 
-        .hero-content { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; margin-top: 60px; }
-        .sede-tag { border: 1px solid var(--dorado); color: var(--dorado); padding: 8px 30px; font-size: 0.7rem; letter-spacing: 4px; margin-bottom: 35px; text-transform: uppercase; }
+        .hero-content { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; margin-top: 50px; }
+        .sede-tag { border: 1px solid var(--dorado); color: var(--dorado); padding: 8px 30px; font-size: 0.7rem; letter-spacing: 4px; margin-bottom: 30px; text-transform: uppercase; }
         h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--dorado); margin: 0; line-height: 1.1; text-transform: uppercase; }
-        .subtitle { font-size: 1.1rem; max-width: 750px; margin: 30px 0 45px 0; font-weight: 300; color: #d1d1d1; line-height: 1.6; }
+        .subtitle { font-size: 1.1rem; max-width: 750px; margin: 30px 0 40px 0; font-weight: 300; color: #d1d1d1; line-height: 1.6; }
 
         .cta-container { display: flex; gap: 20px; }
         .btn-main { background: var(--dorado); color: var(--oscuro); padding: 20px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none; cursor: pointer; }
-        .btn-outline { border: 1px solid white; color: white; padding: 20px 45px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; }
+        .btn-outline { border: 1px solid white; color: white; padding: 20px 45px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; transition: 0.3s; }
+        .btn-outline:hover { background: white; color: black; }
 
-        /* --- POPUP DE ÁREAS --- */
+        /* --- POPUP RESTAURADO (VERSIÓN LUJO) --- */
         #modalAreas { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
-        .modal-body { background: var(--blanco); margin: 50px auto; padding: 60px 50px; width: 90%; max-width: 800px; color: #1a1a1a; position: relative; }
+        .modal-body { background: var(--blanco); margin: 40px auto; padding: 60px 50px; width: 90%; max-width: 800px; color: #1a1a1a; position: relative; }
         .btn-cerrar { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: var(--dorado); }
-        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; text-align: center; margin-bottom: 40px; }
         
+        .modal-header h4 { color: var(--dorado); letter-spacing: 4px; font-size: 0.75rem; margin-bottom: 10px; text-align: center; }
+        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.8rem; text-align: center; margin: 0; }
+        .linea-dorada { width: 60px; height: 2px; background: var(--dorado); margin: 20px auto 40px auto; }
+
         .item-area { border-bottom: 1px solid #eee; }
-        .titulo-area { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; }
-        .contenido-area { max-height: 0; overflow: hidden; transition: 0.4s; color: #666; }
+        .titulo-area { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
+        .titulo-area span { color: var(--dorado); font-size: 1.5rem; }
+        
+        .contenido-area { max-height: 0; overflow: hidden; transition: all 0.4s ease-in-out; color: #666; font-size: 1rem; line-height: 1.6; }
 
         /* WHATSAPP */
-        .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; }
+        .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
         @media (max-width: 992px) {
-            .navbar { padding: 20px; }
-            .nav-links { display: none; } /* Se oculta en móviles para no amontonar */
+            .nav-links, .btn-consulta-top { display: none; }
+            .cta-container { flex-direction: column; width: 100%; }
         }
     </style>
 </head>
@@ -90,28 +95,22 @@
 
 <nav class="navbar">
     <div class="logo-box">
-        <img src="https://cdn-icons-png.flaticon.com/512/3252/3252750.png" class="logo-icon" alt="Logo">
         <div class="logo-text">ESTUDIO JURÍDICO<br><span style="color: var(--dorado); font-size: 0.7rem;">Y NOTARIAL</span></div>
     </div>
-    
     <div class="nav-links">
-        <a href="#inicio">Inicio</a>
-        <a href="#sobre-nosotros">Sobre nosotros</a>
-        <a href="#expertice">Expertice</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#">Inicio</a>
+        <a href="#">Sobre nosotros</a>
+        <a href="#">Expertice</a>
+        <a href="#">Contacto</a>
     </div>
-
     <a href="https://wa.me/59898145817" class="btn-consulta-top">Consulta Virtual</a>
 </nav>
 
-<div class="hero-bg" id="inicio">
+<div class="hero-bg">
     <div class="hero-content">
         <div class="sede-tag">Sede Pando & Canelones</div>
         <h1>Defensa Estratégica.<br>Soluciones Reales.</h1>
-        <p class="subtitle">
-            Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>
-            Representación de alto nivel con seguridad jurídica garantizada.
-        </p>
+        <p class="subtitle">Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>Representación de alto nivel con seguridad jurídica garantizada.</p>
         <div class="cta-container">
             <a href="https://wa.me/59898145817" class="btn-main">Iniciar Evaluación</a>
             <button class="btn-outline" onclick="mostrarModal()">Ver Áreas</button>
@@ -123,46 +122,73 @@
     <div class="modal-body">
         <span class="btn-cerrar" onclick="ocultarModal()">&times;</span>
         <div class="modal-header">
-            <h2 style="text-align: center;">Áreas de Práctica</h2>
+            <h4>EXCELENCIA LEGAL</h4>
+            <h2>Áreas de Práctica</h2>
+            <div class="linea-dorada"></div>
         </div>
+
         <div class="acordeon">
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
-                <div class="contenido-area"><p>Defensa técnica en delitos económicos y responsabilidad empresarial.</p></div>
+                <div class="contenido-area">
+                    <p style="padding-bottom: 20px;">Defensa técnica en delitos económicos y responsabilidad empresarial. Atención prioritaria ante detenciones y urgencias 24 horas.</p>
+                </div>
             </div>
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
-                <div class="contenido-area"><p>Asesoramiento integral en compraventas y regularización de títulos.</p></div>
+                <div class="contenido-area">
+                    <p style="padding-bottom: 20px;">Asesoramiento integral en compraventas, hipotecas, arrendamientos y regularización de títulos de propiedad en Canelones.</p>
+                </div>
             </div>
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">DERECHO CORPORATIVO <span>+</span></div>
-                <div class="contenido-area"><p>Asesoría legal para empresas y startups.</p></div>
+                <div class="contenido-area">
+                    <p style="padding-bottom: 20px;">Constitución de sociedades, redacción de contratos comerciales y asesoría legal preventiva para empresas y emprendedores locales.</p>
+                </div>
             </div>
             <div class="item-area">
                 <div class="titulo-area" onclick="toggleArea(this)">FAMILIA & SUCESIONES <span>+</span></div>
-                <div class="contenido-area"><p>Divorcios, pensiones y tramitaciones sucesorias.</p></div>
+                <div class="contenido-area">
+                    <p style="padding-bottom: 20px;">Divorcios, pensiones alimenticias, tenencia y sucesiones. Tramitación ágil con el enfoque humano que tu familia necesita.</p>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
 <a href="https://wa.me/59898145817" class="wp-btn" target="_blank">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30" alt="WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="30">
 </a>
 
 <script>
     function mostrarModal() { document.getElementById("modalAreas").style.display = "block"; document.body.style.overflow = "hidden"; }
     function ocultarModal() { document.getElementById("modalAreas").style.display = "none"; document.body.style.overflow = "auto"; }
+
     function toggleArea(elemento) {
         const contenido = elemento.nextElementSibling;
         const icono = elemento.querySelector('span');
+        
         if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
-            contenido.style.maxHeight = "0px"; icono.textContent = "+";
+            contenido.style.maxHeight = "0px";
+            icono.textContent = "+";
+            elemento.style.color = "#1a1a1a";
         } else {
-            contenido.style.maxHeight = contenido.scrollHeight + "px"; icono.textContent = "−";
+            document.querySelectorAll('.contenido-area').forEach(c => c.style.maxHeight = "0px");
+            document.querySelectorAll('.titulo-area span').forEach(s => s.textContent = "+");
+            document.querySelectorAll('.titulo-area').forEach(t => t.style.color = "#1a1a1a");
+
+            contenido.style.maxHeight = contenido.scrollHeight + "px";
+            icono.textContent = "−";
+            elemento.style.color = "#c5a044";
         }
+    }
+
+    window.onclick = function(event) {
+        let modal = document.getElementById("modalAreas");
+        if (event.target == modal) { ocultarModal(); }
     }
 </script>
 
 </body>
 </html>
+
