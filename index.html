@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Raleway:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* PALETA DE COLORES */
         :root {
             --gris-oxford: #2C3E50;
             --dorado: #B8860B; 
@@ -28,7 +27,7 @@
             color: var(--gris-oxford);
         }
 
-        /* HEADER */
+        /* HEADER / NAVEGACIÓN */
         header {
             position: fixed;
             top: 0;
@@ -43,9 +42,11 @@
         }
 
         .logo img {
-            height: 130px;
+            height: 120px; /* Tamaño del logo agrandado */
             width: auto;
+            display: block;
             filter: drop-shadow(0px 0px 3px rgba(184, 134, 11, 0.4));
+            transition: transform 0.3s ease;
         }
 
         nav ul {
@@ -66,10 +67,10 @@
 
         nav ul li a:hover { color: var(--dorado); }
 
-        /* SECCIÓN HERO (MODIFICADA) */
+        /* SECCIÓN HERO (CENTRAL CORREGIDA) */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('Fondo.jpg') no-repeat center center/cover;
             display: flex;
             justify-content: center;
@@ -80,51 +81,58 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            margin-top: 50px; /* Ajuste para que no choque con el logo */
         }
 
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
+            line-height: 1.1;
+        }
+
+        /* CMD */
+        .hero-content h1:first-child {
             font-size: 4rem;
-            margin-bottom: 10px;
-            letter-spacing: 3px;
+            margin-bottom: 5px;
+        }
+
+        /* Estudio Jurídico Notarial */
+        .hero-content h1:nth-child(2) {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 20px;
         }
 
         .hero-separator {
-            width: 100px;
+            width: 80px;
             height: 3px;
             background-color: var(--dorado);
             margin: 0 auto 25px;
         }
 
         .hero-content p {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 300;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
+            margin-bottom: 35px;
         }
 
-        /* BOTÓN MEJORADO */
+        /* BOTÓN ESTÉTICO */
         .btn-cta {
             display: inline-block;
-            padding: 16px 45px;
+            padding: 15px 40px;
             background-color: var(--dorado);
             color: white;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: 50px; /* Bordes redondeados modernos */
-            transition: all 0.3s ease;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: 0.3s;
             text-transform: uppercase;
-            letter-spacing: 2px;
             border: 2px solid var(--dorado);
         }
 
         .btn-cta:hover {
             background-color: transparent;
             color: var(--dorado);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transform: scale(1.05);
         }
 
         /* SECCIÓN EQUIPO */
@@ -138,7 +146,6 @@
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             margin-bottom: 40px;
-            color: var(--gris-oxford);
         }
 
         .acordeon {
@@ -151,7 +158,6 @@
             padding: 20px;
             border-bottom: 1px solid #ddd;
             transition: 0.3s;
-            cursor: pointer;
         }
 
         .item-acc:hover {
@@ -182,20 +188,14 @@
             z-index: 1000;
             text-decoration: none;
             box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
-            transition: 0.3s;
         }
 
-        .whatsapp-btn:hover { transform: scale(1.1); }
-
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 10px; }
             .logo img { height: 70px; }
-            nav ul { margin-top: 10px; }
-            nav ul li { margin: 0 10px; }
-            .hero-content h1 { font-size: 2.8rem; }
-            .hero-content p { font-size: 1.2rem; }
-            .btn-cta { padding: 12px 30px; font-size: 0.9rem; }
+            nav ul { margin-top: 15px; }
+            .hero-content h1:first-child { font-size: 2.5rem; }
+            .hero-content h1:nth-child(2) { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -218,10 +218,10 @@
     <section class="hero">
         <div class="hero-content">
             <h1>CMD</h1>
-            <h1>Estudio Jurìdico Notarial</h1>
+            <h1>Estudio Jurídico Notarial</h1>
             <div class="hero-separator"></div>
             <p>Abogados especializados en Derecho Laboral y Civil.</p>
-            <a href="mailto:tuemail@ejemplo.com?subject=Consulta%20Legal" class="btn-cta">Consultar ahora</a>
+            <a href="mailto:estudiocmdm@gmail.com?subject=Consulta%20Legal" class="btn-cta">Consultar ahora</a>
         </div>
     </section>
 
@@ -240,6 +240,5 @@
 
 </body>
 </html>
-
 
 
