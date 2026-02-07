@@ -55,60 +55,63 @@
             --dorado: #c5a044;
             --oscuro: #0a0a0a;
             --blanco: #ffffff;
-            --overlay: rgba(0, 0, 0, 0.85);
+            --overlay: rgba(0, 0, 0, 0.8);
         }
 
         body, html { margin: 0; padding: 0; height: 100%; font-family: 'Montserrat', sans-serif; background-color: var(--oscuro); color: white; overflow-x: hidden; }
 
         /* --- NAVBAR --- */
-        .navbar { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 25px 50px; box-sizing: border-box; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
-        .logo-text { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 2px; }
+        .navbar { position: absolute; top: 0; left: 0; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 25px 50px; box-sizing: border-box; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%); }
+        .logo-text { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 2px; line-height: 1.2; }
         
         .nav-links { display: flex; gap: 35px; align-items: center; }
         .nav-links a { color: white; text-decoration: none; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; cursor: pointer; transition: 0.3s; }
         .nav-links a:hover { color: var(--dorado); }
 
-        .btn-email-top { background: var(--dorado); color: var(--oscuro); padding: 12px 25px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
+        .btn-consulta-top { background: var(--dorado); color: var(--oscuro); padding: 12px 28px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; transition: 0.3s; }
+        .btn-consulta-top:hover { background: #b08d3a; }
 
         /* --- HERO --- */
-        .hero-bg { background-image: linear-gradient(var(--overlay), var(--overlay)), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1600'); background-size: cover; background-position: center; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+        .hero-bg { background-image: linear-gradient(var(--overlay), var(--overlay)), url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&q=80&w=1600'); background-size: cover; background-position: center; height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+        .hero-content { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 20px; margin-top: 50px; }
         .sede-tag { border: 1px solid var(--dorado); color: var(--dorado); padding: 8px 30px; font-size: 0.7rem; letter-spacing: 4px; margin-bottom: 30px; text-transform: uppercase; }
-        h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 6vw, 4rem); color: var(--dorado); margin: 0; text-transform: uppercase; line-height: 1.2; }
-        .subtitle { font-size: 1rem; color: #ccc; margin: 30px 0 40px; max-width: 600px; line-height: 1.6; }
+        h1 { font-family: 'Cinzel', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--dorado); margin: 0; line-height: 1.1; text-transform: uppercase; }
+        .subtitle { font-size: 1.1rem; max-width: 750px; margin: 30px 0 40px 0; font-weight: 300; color: #d1d1d1; line-height: 1.6; }
 
         .cta-container { display: flex; gap: 20px; }
-        .btn-main { background: var(--dorado); color: var(--oscuro); padding: 18px 40px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; border: none; cursor: pointer; }
-        .btn-outline { border: 1px solid white; color: white; padding: 18px 40px; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; background: transparent; cursor: pointer; transition: 0.3s; }
+        .btn-main { background: var(--dorado); color: var(--oscuro); padding: 20px 45px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.85rem; border: none; cursor: pointer; }
+        
+        /* BOTÓN RECUPERADO: VER ÁREAS ORIGINAL */
+        .btn-outline { border: 1px solid white; color: white; padding: 20px 45px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; transition: 0.3s; }
         .btn-outline:hover { background: white; color: black; }
 
         /* --- MODALES --- */
-        .modal { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); overflow-y: auto; }
-        .modal-body { background: var(--blanco); margin: 5vh auto; padding: 60px 50px; width: 90%; max-width: 800px; color: #111; position: relative; border-radius: 2px; }
-        .btn-cerrar { position: absolute; right: 25px; top: 15px; font-size: 40px; cursor: pointer; color: var(--dorado); line-height: 1; }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
+        .modal-body { background: var(--blanco); margin: 40px auto; padding: 60px 50px; width: 90%; max-width: 800px; color: #1a1a1a; position: relative; }
+        .btn-cerrar { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: var(--dorado); line-height: 1; }
         
         .modal-header { text-align: center; margin-bottom: 40px; }
         .modal-header h4 { color: var(--dorado); font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 10px; text-transform: uppercase; }
-        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.8rem; margin: 0; text-transform: uppercase; }
+        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.8rem; margin: 0; }
         .linea-dorada { width: 60px; height: 2px; background: var(--dorado); margin: 20px auto 0 auto; }
 
         .acordeon { text-align: left; border-top: 1px solid #eee; margin-top: 20px; }
         .item-acc { border-bottom: 1px solid #eee; }
         
-        /* Estilo para EQUIPO (Solo Texto) */
+        /* Equipo Estático */
         .nombre-equipo { padding: 30px 0; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; color: #1a1a1a; display: block; }
 
-        /* Estilo para ÁREAS (Acordeón) */
+        /* Áreas con Acordeón */
         .titulo-acc { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
         .titulo-acc span { color: var(--dorado); font-size: 1.5rem; }
         .contenido-acc { max-height: 0; overflow: hidden; transition: 0.4s ease-in-out; color: #666; font-size: 1rem; line-height: 1.6; }
 
-        /* WHATSAPP */
+        /* WHATSAPP FLOAT */
         .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .nav-links { display: none; }
-            .cta-container { flex-direction: column; width: 90%; }
-            .modal-header h2 { font-size: 2rem; }
+            .cta-container { flex-direction: column; width: 100%; }
         }
     </style>
 </head>
@@ -122,16 +125,18 @@
         <a href="javascript:void(0)">Expertise</a>
         <a href="javascript:void(0)">Contacto</a>
     </div>
-    <a href="mailto:dra.alisoncatelotti@gmail.com" class="btn-email-top">Consulta Virtual</a>
+    <a href="mailto:dra.alisoncatelotti@gmail.com" class="btn-consulta-top">Consulta Virtual</a>
 </nav>
 
 <div class="hero-bg">
-    <div class="sede-tag">Sede Pando & Canelones</div>
-    <h1>Defensa Estratégica.<br>Soluciones Reales.</h1>
-    <p class="subtitle">Abogados y Escribanos comprometidos con la excelencia jurídica y la seguridad de sus trámites.</p>
-    <div class="cta-container">
-        <a href="https://wa.me/59898145817" class="btn-main">Iniciar Evaluación</a>
-        <button class="btn-outline" onclick="abrirModal('modalAreas')">Ver Áreas</button>
+    <div class="hero-content">
+        <div class="sede-tag">Sede Pando & Canelones</div>
+        <h1>Defensa Estratégica.<br>Soluciones Reales.</h1>
+        <p class="subtitle">Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>Representación de alto nivel con seguridad jurídica garantizada.</p>
+        <div class="cta-container">
+            <a href="https://wa.me/59898145817" class="btn-main">Iniciar Evaluación</a>
+            <button class="btn-outline" onclick="abrirModal('modalAreas')">Ver Áreas</button>
+        </div>
     </div>
 </div>
 
@@ -144,15 +149,9 @@
             <div class="linea-dorada"></div>
         </div>
         <div class="acordeon">
-            <div class="item-acc">
-                <span class="nombre-equipo">Dra. Esc. Alison Catelotti</span>
-            </div>
-            <div class="item-acc">
-                <span class="nombre-equipo">Dra. Erika Martínez</span>
-            </div>
-            <div class="item-acc">
-                <span class="nombre-equipo">Esc. Juan Manuel dos Santos</span>
-            </div>
+            <div class="item-acc"><span class="nombre-equipo">Dra. Esc. Alison Catelotti</span></div>
+            <div class="item-acc"><span class="nombre-equipo">Dra. Erika Martínez</span></div>
+            <div class="item-acc"><span class="nombre-equipo">Esc. Juan Manuel dos Santos</span></div>
         </div>
     </div>
 </div>
@@ -176,11 +175,11 @@
             </div>
             <div class="item-acc">
                 <div class="titulo-acc" onclick="toggleAcc(this)">DERECHO CORPORATIVO <span>+</span></div>
-                <div class="contenido-acc"><p style="padding-bottom: 25px;">Constitución de sociedades y asesoría legal preventiva para empresas.</p></div>
+                <div class="contenido-acc"><p style="padding-bottom: 25px;">Constitución de sociedades y asesoría legal preventiva.</p></div>
             </div>
             <div class="item-acc">
                 <div class="titulo-acc" onclick="toggleAcc(this)">FAMILIA & SUCESIONES <span>+</span></div>
-                <div class="contenido-acc"><p style="padding-bottom: 25px;">Gestión de divorcios, sucesiones y trámites familiares complejos.</p></div>
+                <div class="contenido-acc"><p style="padding-bottom: 25px;">Gestión de divorcios, sucesiones y trámites familiares.</p></div>
             </div>
         </div>
     </div>
