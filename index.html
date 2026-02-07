@@ -34,22 +34,20 @@
         .logo-text { font-family: 'Cinzel', serif; font-size: 0.9rem; letter-spacing: 2px; line-height: 1.2; }
 
         .nav-links { display: flex; gap: 35px; }
-        .nav-links a {
+        .nav-links a, .nav-links button {
             color: white; text-decoration: none; text-transform: uppercase;
             font-size: 0.75rem; letter-spacing: 2px; font-weight: 400;
-            transition: 0.3s;
+            transition: 0.3s; background: none; border: none; cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
         }
-        .nav-links a:hover { color: var(--dorado); }
+        .nav-links a:hover, .nav-links button:hover { color: var(--dorado); }
 
-        /* Botón de Correo Electrónico */
         .btn-email-top {
             background: var(--dorado); color: var(--oscuro);
             padding: 12px 28px; text-decoration: none;
             font-weight: 700; text-transform: uppercase; font-size: 0.75rem;
-            letter-spacing: 1px; transition: 0.3s;
-            cursor: pointer;
+            letter-spacing: 1px;
         }
-        .btn-email-top:hover { background: #b08d3a; }
 
         /* --- HERO --- */
         .hero-bg {
@@ -69,18 +67,19 @@
         .btn-outline { border: 1px solid white; color: white; padding: 20px 45px; text-decoration: none; text-transform: uppercase; font-size: 0.85rem; background: transparent; cursor: pointer; transition: 0.3s; }
         .btn-outline:hover { background: white; color: black; }
 
-        /* --- POPUP ÁREAS --- */
-        #modalAreas { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
+        /* --- MODALES (POPUPS) --- */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); overflow-y: auto; }
         .modal-body { background: var(--blanco); margin: 40px auto; padding: 60px 50px; width: 90%; max-width: 800px; color: #1a1a1a; position: relative; }
         .btn-cerrar { position: absolute; right: 25px; top: 15px; font-size: 35px; cursor: pointer; color: var(--dorado); }
+        
         .modal-header h4 { color: var(--dorado); letter-spacing: 4px; font-size: 0.75rem; margin-bottom: 10px; text-align: center; }
-        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.8rem; text-align: center; margin: 0; }
+        .modal-header h2 { font-family: 'Cinzel', serif; font-size: 2.5rem; text-align: center; margin: 0; }
         .linea-dorada { width: 60px; height: 2px; background: var(--dorado); margin: 20px auto 40px auto; }
         
-        .item-area { border-bottom: 1px solid #eee; }
-        .titulo-area { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
-        .titulo-area span { color: var(--dorado); font-size: 1.5rem; }
-        .contenido-area { max-height: 0; overflow: hidden; transition: all 0.4s ease-in-out; color: #666; font-size: 1rem; line-height: 1.6; }
+        .item-desplegable { border-bottom: 1px solid #eee; }
+        .titulo-desplegable { padding: 25px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; text-transform: uppercase; }
+        .titulo-desplegable span { color: var(--dorado); font-size: 1.5rem; }
+        .contenido-desplegable { max-height: 0; overflow: hidden; transition: all 0.4s ease-in-out; color: #666; font-size: 1rem; line-height: 1.6; }
 
         /* WHATSAPP FLOAT */
         .wp-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
@@ -99,7 +98,7 @@
     </div>
     <div class="nav-links">
         <a href="#">Inicio</a>
-        <a href="#">Sobre nosotros</a>
+        <button onclick="abrirModal('modalEquipo')">Sobre nosotros</button>
         <a href="#">Expertice</a>
         <a href="#">Contacto</a>
     </div>
@@ -113,35 +112,60 @@
         <p class="subtitle">Abogados especializados en Derecho Penal, Administrativo y Corporativo.<br>Representación de alto nivel con seguridad jurídica garantizada.</p>
         <div class="cta-container">
             <a href="https://wa.me/59898145817" class="btn-main">Iniciar Evaluación</a>
-            <button class="btn-outline" onclick="mostrarModal()">Ver Áreas</button>
+            <button class="btn-outline" onclick="abrirModal('modalAreas')">Ver Áreas</button>
         </div>
     </div>
 </div>
 
-<div id="modalAreas">
+<div id="modalEquipo" class="modal">
     <div class="modal-body">
-        <span class="btn-cerrar" onclick="ocultarModal()">&times;</span>
+        <span class="btn-cerrar" onclick="cerrarModal('modalEquipo')">&times;</span>
+        <div class="modal-header">
+            <h4>NUESTRO STAFF</h4>
+            <h2>El Equipo</h2>
+            <div class="linea-dorada"></div>
+        </div>
+        <div class="acordeon">
+            <div class="item-desplegable">
+                <div class="titulo-desplegable" onclick="toggleAcc(this)">Dra. Esc. Alison Catelotti <span>+</span></div>
+                <div class="contenido-desplegable"><p style="padding-bottom: 20px;">Especialista en Derecho Notarial y Real Estate. Directora técnica del estudio con amplia trayectoria en asesoramiento corporativo.</p></div>
+            </div>
+            <div class="item-desplegable">
+                <div class="titulo-desplegable" onclick="toggleAcc(this)">Dra. Erika Martínez <span>+</span></div>
+                <div class="contenido-area"><p style="padding-bottom: 20px;">Abogada litigante especializada en Derecho Penal y Compliance. Experticia en defensa estratégica y procesos administrativos.</p></div>
+            </div>
+            <div class="item-desplegable">
+                <div class="titulo-desplegable" onclick="toggleAcc(this)">Esc. Juan Manuel dos Santos <span>+</span></div>
+                <div class="contenido-area"><p style="padding-bottom: 20px;">Escribano Público especializado en sucesiones, contratos y gestión de activos inmobiliarios en el departamento de Canelones.</p></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalAreas" class="modal">
+    <div class="modal-body">
+        <span class="btn-cerrar" onclick="cerrarModal('modalAreas')">&times;</span>
         <div class="modal-header">
             <h4>EXCELENCIA LEGAL</h4>
             <h2>Áreas de Práctica</h2>
             <div class="linea-dorada"></div>
         </div>
         <div class="acordeon">
-            <div class="item-area">
-                <div class="titulo-area" onclick="toggleArea(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
-                <div class="contenido-area"><p style="padding-bottom: 20px;">Defensa técnica en delitos económicos y responsabilidad empresarial. Atención 24hs.</p></div>
+            <div class="item-desplegable">
+                <div class="titulo-desplegable" onclick="toggleAcc(this)">DERECHO PENAL & COMPLIANCE <span>+</span></div>
+                <div class="contenido-desplegable"><p style="padding-bottom: 20px;">Defensa técnica en delitos económicos y responsabilidad empresarial.</p></div>
+            </div>
+            <div class="item-desplegable">
+                <div class="titulo-desplegable" onclick="toggleArea(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
+                <div class="contenido-desplegable"><p style="padding-bottom: 20px;">Asesoramiento integral en compraventas y regularización de títulos.</p></div>
             </div>
             <div class="item-area">
-                <div class="titulo-area" onclick="toggleArea(this)">NOTARIADO & REAL ESTATE <span>+</span></div>
-                <div class="contenido-area"><p style="padding-bottom: 20px;">Asesoramiento integral en compraventas y regularización de títulos.</p></div>
+                <div class="titulo-desplegable" onclick="toggleAcc(this)">DERECHO CORPORATIVO <span>+</span></div>
+                <div class="contenido-desplegable"><p style="padding-bottom: 20px;">Constitución de sociedades y asesoría legal preventiva.</p></div>
             </div>
             <div class="item-area">
-                <div class="titulo-area" onclick="toggleArea(this)">DERECHO CORPORATIVO <span>+</span></div>
-                <div class="contenido-area"><p style="padding-bottom: 20px;">Constitución de sociedades y asesoría legal preventiva.</p></div>
-            </div>
-            <div class="item-area">
-                <div class="titulo-area" onclick="toggleArea(this)">FAMILIA & SUCESIONES <span>+</span></div>
-                <div class="contenido-area"><p style="padding-bottom: 20px;">Gestión de divorcios, pensiones y tramitaciones sucesorias.</p></div>
+                <div class="titulo-desplegable" onclick="toggleAcc(this)">FAMILIA & SUCESIONES <span>+</span></div>
+                <div class="contenido-desplegable"><p style="padding-bottom: 20px;">Gestión de divorcios, pensiones y tramitaciones sucesorias.</p></div>
             </div>
         </div>
     </div>
@@ -152,10 +176,19 @@
 </a>
 
 <script>
-    function mostrarModal() { document.getElementById("modalAreas").style.display = "block"; document.body.style.overflow = "hidden"; }
-    function ocultarModal() { document.getElementById("modalAreas").style.display = "none"; document.body.style.overflow = "auto"; }
+    // Control de Modales
+    function abrirModal(id) {
+        document.getElementById(id).style.display = "block";
+        document.body.style.overflow = "hidden";
+    }
 
-    function toggleArea(elemento) {
+    function cerrarModal(id) {
+        document.getElementById(id).style.display = "none";
+        document.body.style.overflow = "auto";
+    }
+
+    // Control de Acordeones
+    function toggleAcc(elemento) {
         const contenido = elemento.nextElementSibling;
         const icono = elemento.querySelector('span');
         if (contenido.style.maxHeight && contenido.style.maxHeight !== "0px") {
@@ -163,15 +196,25 @@
             icono.textContent = "+";
             elemento.style.color = "#1a1a1a";
         } else {
-            document.querySelectorAll('.contenido-area').forEach(c => c.style.maxHeight = "0px");
-            document.querySelectorAll('.titulo-area span').forEach(s => s.textContent = "+");
-            document.querySelectorAll('.titulo-area').forEach(t => t.style.color = "#1a1a1a");
+            // Cerramos otros dentro del mismo modal
+            const parent = elemento.closest('.acordeon');
+            parent.querySelectorAll('.contenido-desplegable').forEach(c => c.style.maxHeight = "0px");
+            parent.querySelectorAll('.titulo-desplegable span').forEach(s => s.textContent = "+");
+            parent.querySelectorAll('.titulo-desplegable').forEach(t => t.style.color = "#1a1a1a");
+
             contenido.style.maxHeight = contenido.scrollHeight + "px";
             icono.textContent = "−";
             elemento.style.color = "#c5a044";
         }
     }
-    window.onclick = function(event) { if (event.target == document.getElementById("modalAreas")) { ocultarModal(); } }
+
+    // Cerrar al hacer clic fuera
+    window.onclick = function(event) {
+        if (event.target.className === 'modal') {
+            event.target.style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    }
 </script>
 
 </body>
