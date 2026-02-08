@@ -62,6 +62,7 @@
             text-transform: uppercase;
             font-size: 0.9rem;
             transition: 0.3s;
+            cursor: pointer;
         }
 
         nav ul li a:hover { color: var(--dorado); }
@@ -105,7 +106,7 @@
             border: 2px solid var(--dorado);
         }
 
-        /* SECCIÓN EQUIPO (ACORDEÓN MEJORADO) */
+        /* SECCIÓN EQUIPO */
         #nosotros {
             padding: 100px 10%;
             background-color: white;
@@ -145,12 +146,8 @@
             font-family: 'Raleway', sans-serif;
         }
 
-        .nombre-equipo:hover {
-            background-color: var(--blanco-escarcha);
-            color: var(--dorado);
-        }
+        .nombre-equipo:hover { background-color: var(--blanco-escarcha); color: var(--dorado); }
 
-        /* Icono de flecha */
         .nombre-equipo::after {
             content: '\f078';
             font-family: 'Font Awesome 5 Free';
@@ -159,11 +156,8 @@
             transition: transform 0.3s;
         }
 
-        .item-acc.active .nombre-equipo::after {
-            transform: rotate(180deg);
-        }
+        .item-acc.active .nombre-equipo::after { transform: rotate(180deg); }
 
-        /* Descripción oculta por defecto */
         .descripcion-equipo {
             max-height: 0;
             padding: 0 20px;
@@ -175,9 +169,72 @@
         }
 
         .item-acc.active .descripcion-equipo {
-            max-height: 200px; /* Ajusta según el largo del texto */
+            max-height: 200px;
             padding: 15px 20px 25px 20px;
             opacity: 1;
+        }
+
+        /* VENTANA EMERGENTE (MODAL CONTACTO) */
+        .modal-contacto {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-top: 5px solid var(--dorado);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gris-oxford);
+        }
+
+        .modal-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--gris-oxford);
+        }
+
+        .contacto-info {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .contacto-info p {
+            margin: 15px 0;
+            font-size: 1.1rem;
+            color: #444;
+            display: flex;
+            align-items: center;
+        }
+
+        .contacto-info i {
+            color: var(--dorado);
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
         }
 
         /* WHATSAPP */
@@ -217,7 +274,7 @@
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#">Áreas</a></li>
-                <li><a href="#">Contacto</a></li>
+                <li><a onclick="toggleModal()">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -235,59 +292,76 @@
     <section id="nosotros">
         <h2>Nuestro Equipo</h2>
         <div class="acordeon">
-            
             <div class="item-acc">
                 <button class="nombre-equipo">Dra. Esc. Alison Catelotti</button>
                 <div class="descripcion-equipo">
                     Egresada de la Carrera de Dra. en Derecho y Ciencias Sociales de Udelar en 2018. Y Egresada de la carrera de notariado en Febrero de 2022.
                 </div>
             </div>
-
             <div class="item-acc">
                 <button class="nombre-equipo">Dra. Erika Martínez</button>
                 <div class="descripcion-equipo">
                     Egresada como Dra. en Derecho y Ciencias Sociales en 2021.
                 </div>
             </div>
-
             <div class="item-acc">
                 <button class="nombre-equipo">Dr. Esc. Juan Manuel dos Santos</button>
                 <div class="descripcion-equipo">
                     Juan Manuel egresó como Escribano en 2024 y como Abogado en 2026.
                 </div>
             </div>
-
         </div>
     </section>
+
+    <div id="modalContacto" class="modal-contacto">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleModal()">&times;</span>
+            <h3>Datos de Contacto</h3>
+            <div class="contacto-info">
+                <p><i class="fas fa-map-marker-alt"></i> Paysandú 935, oficina 22 - Centro</p>
+                <p><i class="fas fa-phone-alt"></i> 098145817</p>
+                <p><i class="fas fa-envelope"></i> estudiocym.uy@gmail.com</p>
+            </div>
+            <a href="https://wa.me/59898145817" class="btn-cta" style="font-size: 0.8rem; padding: 10px 25px;">Enviar mensaje</a>
+        </div>
+    </div>
 
     <a href="https://wa.me/59898145817?text=Hola,%20me%20gustaría%20realizar%20una%20consulta%20legal." class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
+        // Lógica para el acordeón de equipo
         document.querySelectorAll('.nombre-equipo').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
-                
-                // Cierra los otros items si quieres que solo haya uno abierto a la vez
                 document.querySelectorAll('.item-acc').forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
+                    if (otherItem !== item) otherItem.classList.remove('active');
                 });
-
-                // Activa/Desactiva el item actual
                 item.classList.toggle('active');
             });
         });
-    </script>
 
+        // Lógica para el modal de contacto
+        function toggleModal() {
+            const modal = document.getElementById('modalContacto');
+            if (modal.style.display === "flex") {
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "flex";
+            }
+        }
+
+        // Cerrar modal si se hace clic fuera del cuadro blanco
+        window.onclick = function(event) {
+            const modal = document.getElementById('modalContacto');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
-
-
-
-
 
 
 
