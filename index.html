@@ -112,34 +112,53 @@
             transform: scale(1.05);
         }
 
-        /* SECCIÓN EQUIPO */
-        #nosotros {
+        /* SECCIONES COMUNES (NOSOTROS Y ÁREAS) */
+        section {
             padding: 100px 10%;
-            background-color: white;
             text-align: center;
         }
 
-        #nosotros h2 {
+        #nosotros { background-color: white; }
+        #areas { background-color: var(--blanco-escarcha); }
+
+        h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
             margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            width: 50px;
+            height: 2px;
+            background: var(--dorado);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .acordeon {
             max-width: 700px;
-            margin: 0 auto;
+            margin: 40px auto;
             text-align: left;
         }
 
         .item-acc {
-            border-bottom: 1px solid #ddd;
+            background-color: white;
+            border: 1px solid #eee;
+            margin-bottom: 10px;
+            border-radius: 8px;
             overflow: hidden;
+            transition: 0.3s;
         }
 
-        .nombre-equipo {
+        .trigger-acc {
             width: 100%;
             padding: 20px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--gris-oxford);
             background: none;
@@ -148,13 +167,10 @@
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            transition: 0.3s;
             font-family: 'Raleway', sans-serif;
         }
 
-        .nombre-equipo:hover { background-color: var(--blanco-escarcha); color: var(--dorado); }
-
-        .nombre-equipo::after {
+        .trigger-acc::after {
             content: '\f078';
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
@@ -162,21 +178,25 @@
             transition: transform 0.3s;
         }
 
-        .item-acc.active .nombre-equipo::after { transform: rotate(180deg); }
+        .item-acc.active {
+            border-left: 5px solid var(--dorado);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
 
-        .descripcion-equipo {
+        .item-acc.active .trigger-acc::after { transform: rotate(180deg); }
+
+        .descripcion-acc {
             max-height: 0;
             padding: 0 20px;
             opacity: 0;
             transition: all 0.4s ease-out;
             color: #555;
-            line-height: 1.6;
-            background-color: #fafafa;
+            line-height: 1.7;
         }
 
-        .item-acc.active .descripcion-equipo {
-            max-height: 200px;
-            padding: 15px 20px 25px 20px;
+        .item-acc.active .descripcion-acc {
+            max-height: 300px;
+            padding: 10px 20px 25px 20px;
             opacity: 1;
         }
 
@@ -213,13 +233,6 @@
             right: 20px;
             font-size: 24px;
             cursor: pointer;
-            color: var(--gris-oxford);
-        }
-
-        .modal-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
             color: var(--gris-oxford);
         }
 
@@ -263,12 +276,11 @@
             transition: 0.3s;
         }
 
-        .whatsapp-btn:hover { transform: scale(1.1); }
-
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 10px; }
             .logo img { height: 70px; }
             nav ul { margin-top: 15px; }
+            .hero-content h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -281,8 +293,8 @@
         <nav>
             <ul>
                 <li><a href="#">Inicio</a></li>
+                <li><a href="#areas">Áreas</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#">Áreas</a></li>
                 <li><a onclick="toggleModal()">Contacto</a></li>
             </ul>
         </nav>
@@ -294,8 +306,33 @@
             <p style="font-size: 1.8rem; font-family: 'Playfair Display';">Estudio Jurídico Notarial</p>
             <div class="hero-separator"></div>
             <p style="font-size: 1.2rem; font-weight: 300; margin-bottom: 30px;">Abogados y Escribanos especializados en Derecho Notarial, Laboral y Civil.</p>
-            
             <a href="mailto:estudiocym.uy@gmail.com?subject=Solicito%20asistencia%20legal" class="btn-cta">Consultar ahora</a>
+        </div>
+    </section>
+
+    <section id="areas">
+        <h2>Áreas de Práctica</h2>
+        <div class="acordeon">
+            <div class="item-acc">
+                <button class="trigger-acc">Derecho Notarial</button>
+                <div class="descripcion-acc">
+                    Asesoramiento integral en actas, certificaciones, escrituras públicas, compraventas de inmuebles y vehículos, y todo tipo de servicios notariales para garantizar seguridad jurídica.
+                </div>
+            </div>
+
+            <div class="item-acc">
+                <button class="trigger-acc">Derecho Laboral</button>
+                <div class="descripcion-acc">
+                    Especialistas en la defensa de los derechos de los trabajadores y empleadores: despidos, accidentes de trabajo, reclamos de haberes, negociación colectiva y conciliaciones ante el MTSS.
+                </div>
+            </div>
+
+            <div class="item-acc">
+                <button class="trigger-acc">Derecho Civil</button>
+                <div class="descripcion-acc">
+                    Representación en procesos judiciales y extrajudiciales: sucesiones, contratos, daños y perjuicios, arrendamientos y desalojos, y asuntos de familia.
+                </div>
+            </div>
         </div>
     </section>
 
@@ -303,20 +340,20 @@
         <h2>Nuestro Equipo</h2>
         <div class="acordeon">
             <div class="item-acc">
-                <button class="nombre-equipo">Dra. Esc. Alison Catelotti</button>
-                <div class="descripcion-equipo">
+                <button class="trigger-acc">Dra. Esc. Alison Catelotti</button>
+                <div class="descripcion-acc">
                     Egresada de la Carrera de Dra. en Derecho y Ciencias Sociales de Udelar en 2018. Y Egresada de la carrera de notariado en Febrero de 2022.
                 </div>
             </div>
             <div class="item-acc">
-                <button class="nombre-equipo">Dra. Erika Martínez</button>
-                <div class="descripcion-equipo">
+                <button class="trigger-acc">Dra. Erika Martínez</button>
+                <div class="descripcion-acc">
                     Egresada como Dra. en Derecho y Ciencias Sociales en 2021.
                 </div>
             </div>
             <div class="item-acc">
-                <button class="nombre-equipo">Dr. Esc. Juan Manuel dos Santos</button>
-                <div class="descripcion-equipo">
+                <button class="trigger-acc">Dr. Esc. Juan Manuel dos Santos</button>
+                <div class="descripcion-acc">
                     Juan Manuel egresó como Escribano en 2024 y como Abogado en 2026.
                 </div>
             </div>
@@ -341,10 +378,12 @@
     </a>
 
     <script>
-        document.querySelectorAll('.nombre-equipo').forEach(button => {
+        // Lógica única para todos los acordeones
+        document.querySelectorAll('.trigger-acc').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
-                document.querySelectorAll('.item-acc').forEach(otherItem => {
+                // Solo cierra los hermanos de este mismo acordeón
+                item.closest('.acordeon').querySelectorAll('.item-acc').forEach(otherItem => {
                     if (otherItem !== item) otherItem.classList.remove('active');
                 });
                 item.classList.toggle('active');
