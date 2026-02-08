@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* HEADER / NAVEGACIÓN */
+        /* HEADER / NAVEGACIÓN REFINADA */
         header {
             position: fixed;
             top: 0;
@@ -55,18 +55,27 @@
             list-style: none;
         }
 
-        nav ul li { margin-left: 30px; }
+        nav ul li { margin-left: 35px; }
 
         nav ul li a {
             text-decoration: none;
             color: white;
-            font-weight: 600;
+            font-family: 'Cinzel', serif; /* Fuente elegante coherente con el logo */
+            font-weight: 400;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+            font-size: 1.1rem; /* Más grande y legible */
+            letter-spacing: 2px; /* Espaciado estético */
+            transition: 0.3s;
+            cursor: pointer;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
         }
 
-        /* SECCIÓN HERO - CORRECCIÓN DE POSICIÓN */
+        nav ul li a:hover { 
+            color: var(--dorado); 
+            text-shadow: 0px 0px 10px rgba(184, 134, 11, 0.8);
+        }
+
+        /* SECCIÓN HERO */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), 
@@ -80,13 +89,12 @@
         }
 
         .hero-content {
-            /* Aumentamos el margen superior para que no lo tape la barra/logo */
             margin-top: 180px; 
         }
 
         .hero-content h1 {
             font-family: 'Cinzel', serif;
-            font-size: 5rem; /* Ajustado ligeramente para mejor encuadre */
+            font-size: 5rem;
             letter-spacing: 18px;
             margin-bottom: 0px;
             text-shadow: 3px 3px 15px rgba(0,0,0,0.6);
@@ -102,7 +110,7 @@
         }
 
         .hero-separator {
-            width: 180px; /* Separador aún más presente */
+            width: 180px; 
             height: 2px;
             background-color: var(--dorado);
             margin: 0 auto 30px;
@@ -154,7 +162,7 @@
         .descripcion-acc { max-height: 0; padding: 0 22px; opacity: 0; transition: all 0.4s ease-out; color: #555; line-height: 1.8; }
         .item-acc.active .descripcion-acc { max-height: 400px; padding: 15px 22px 25px 22px; opacity: 1; }
 
-        /* MODAL Y BOTONES */
+        /* MODAL */
         .modal-contacto { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
         .modal-content { background-color: white; padding: 40px; border-radius: 15px; max-width: 450px; width: 90%; text-align: center; position: relative; border-top: 5px solid var(--dorado); }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--gris-oxford); }
@@ -164,6 +172,9 @@
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px 10px; background-color: rgba(0, 0, 0, 0.5); }
             .logo img { height: 100px; }
+            nav ul { margin-top: 10px; }
+            nav ul li { margin: 0 10px; }
+            nav ul li a { font-size: 0.85rem; letter-spacing: 1px; }
             .hero-content { margin-top: 140px; }
             .hero-content h1 { font-size: 2.8rem; letter-spacing: 8px; }
             .subtitulo-hero { font-size: 1.4rem; }
@@ -251,12 +262,13 @@
         });
         function toggleModal() {
             const modal = document.getElementById('modalContacto');
-            modal.style.display = (modal.style.display === "flex") ? "none" : "flex";
+            modal.style.display = (modal.style.display === \"flex\") ? \"none\" : \"flex\";
         }
         window.onclick = function(event) {
             const modal = document.getElementById('modalContacto');
-            if (event.target == modal) modal.style.display = "none";
+            if (event.target == modal) modal.style.display = \"none\";
         }
     </script>
 </body>
 </html>
+
