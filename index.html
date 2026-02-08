@@ -36,7 +36,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 5%;
+            padding: 5px 5%;
             background-color: var(--negro-transparente);
             backdrop-filter: blur(5px);
             z-index: 1000;
@@ -48,7 +48,6 @@
             width: auto;
             display: block;
             filter: drop-shadow(0px 0px 8px rgba(184, 134, 11, 0.6));
-            transition: all 0.3s ease;
         }
 
         nav ul {
@@ -64,14 +63,10 @@
             font-weight: 600;
             text-transform: uppercase;
             font-size: 0.9rem;
-            transition: 0.3s;
-            cursor: pointer;
             text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
         }
 
-        nav ul li a:hover { color: var(--dorado); }
-
-        /* SECCIÓN HERO - MEJORAS ESTÉTICAS */
+        /* SECCIÓN HERO - CORRECCIÓN DE POSICIÓN */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), 
@@ -85,43 +80,41 @@
         }
 
         .hero-content {
-            margin-top: 50px; 
+            /* Aumentamos el margen superior para que no lo tape la barra/logo */
+            margin-top: 180px; 
         }
 
         .hero-content h1 {
-            font-family: 'Cinzel', serif; /* Fuente majestuosa para las siglas */
-            font-size: 5.5rem;
-            letter-spacing: 15px; /* Espaciado premium */
+            font-family: 'Cinzel', serif;
+            font-size: 5rem; /* Ajustado ligeramente para mejor encuadre */
+            letter-spacing: 18px;
             margin-bottom: 0px;
             text-shadow: 3px 3px 15px rgba(0,0,0,0.6);
-            color: white;
+            line-height: 1.2;
         }
 
         .subtitulo-hero {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-style: italic;
-            font-weight: 400;
             margin-bottom: 20px;
             letter-spacing: 2px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
         }
 
         .hero-separator {
-            width: 150px; /* SEPARADOR MÁS LARGO */
+            width: 180px; /* Separador aún más presente */
             height: 2px;
             background-color: var(--dorado);
             margin: 0 auto 30px;
-            box-shadow: 0px 0px 10px var(--dorado);
+            box-shadow: 0px 0px 8px var(--dorado);
         }
 
         .descripcion-hero {
-            font-family: 'Raleway', sans-serif;
             font-size: 1.1rem;
             font-weight: 300;
             margin-bottom: 40px;
             letter-spacing: 1px;
-            max-width: 600px;
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -137,42 +130,21 @@
             transition: 0.3s;
             text-transform: uppercase;
             border: 2px solid var(--dorado);
-            letter-spacing: 1px;
         }
 
         .btn-cta:hover {
             background-color: transparent;
             color: var(--dorado);
-            transform: translateY(-3px);
         }
 
-        /* SECCIONES AJUSTADAS */
-        section { 
-            padding: 100px 10%; 
-            text-align: center; 
-            scroll-margin-top: 180px; 
-        }
-
+        /* SECCIONES Y ACORDEONES */
+        section { padding: 100px 10%; text-align: center; scroll-margin-top: 180px; }
         #nosotros { background-color: white; }
         #areas { background-color: var(--blanco-escarcha); }
 
-        h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            position: relative;
-            display: inline-block;
-            letter-spacing: 1px;
-        }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 40px; position: relative; display: inline-block; }
+        h2::after { content: ''; width: 60px; height: 2px; background: var(--dorado); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
 
-        h2::after {
-            content: '';
-            width: 60px; height: 2px;
-            background: var(--dorado);
-            position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
-        }
-
-        /* ACORDEONES MANTENIENDO ESTÉTICA */
         .acordeon { max-width: 750px; margin: 0 auto; text-align: left; }
         .item-acc { background-color: white; border: 1px solid #eee; margin-bottom: 12px; border-radius: 8px; overflow: hidden; }
         .trigger-acc { width: 100%; padding: 22px; font-size: 1.15rem; font-weight: 600; color: var(--gris-oxford); background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Raleway', sans-serif; }
@@ -191,11 +163,11 @@
         /* RESPONSIVE */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px 10px; background-color: rgba(0, 0, 0, 0.5); }
-            .logo img { height: 100px; margin-bottom: 10px; }
-            .hero-content h1 { font-size: 3.2rem; letter-spacing: 8px; }
-            .subtitulo-hero { font-size: 1.5rem; }
-            .hero-separator { width: 100px; }
-            .hero-content { margin-top: 100px; }
+            .logo img { height: 100px; }
+            .hero-content { margin-top: 140px; }
+            .hero-content h1 { font-size: 2.8rem; letter-spacing: 8px; }
+            .subtitulo-hero { font-size: 1.4rem; }
+            .hero-separator { width: 120px; }
         }
     </style>
 </head>
@@ -230,15 +202,15 @@
         <div class="acordeon">
             <div class="item-acc">
                 <button class="trigger-acc">Derecho Notarial</button>
-                <div class="descripcion-acc">Asesoramiento integral en actas, certificaciones, escrituras públicas, compraventas de inmuebles y vehículos, y todo tipo de servicios notariales para garantizar su seguridad jurídica.</div>
+                <div class="descripcion-acc">Asesoramiento integral en actas, certificaciones, escrituras públicas, compraventas de inmuebles y vehículos, y todo tipo de servicios notariales.</div>
             </div>
             <div class="item-acc">
                 <button class="trigger-acc">Derecho Laboral</button>
-                <div class="descripcion-acc">Defensa de derechos de trabajadores y empleadores: despidos, accidentes, reclamos de haberes, negociación colectiva y conciliaciones ante el MTSS.</div>
+                <div class="descripcion-acc">Defensa de derechos de trabajadores y empleadores: despidos, accidentes, reclamos de haberes y conciliaciones ante el MTSS.</div>
             </div>
             <div class="item-acc">
                 <button class="trigger-acc">Derecho Civil</button>
-                <div class="descripcion-acc">Sucesiones, contratos, daños y perjuicios, arrendamientos, desalojos y asuntos de familia con atención personalizada y humana.</div>
+                <div class="descripcion-acc">Sucesiones, contratos, daños y perjuicios, arrendamientos, desalojos y asuntos de familia con atención personalizada.</div>
             </div>
         </div>
     </section>
@@ -257,9 +229,9 @@
             <span class="close-modal" onclick="toggleModal()">&times;</span>
             <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 25px;">Datos de Contacto</h3>
             <div class="contacto-info">
-                <p style="margin: 15px 0; display: flex; align-items: center;"><i class="fas fa-map-marker-alt" style="color: var(--dorado); margin-right: 15px; width: 20px;"></i> Paysandú 935, oficina 22 - Centro</p>
-                <p style="margin: 15px 0; display: flex; align-items: center;"><i class="fas fa-phone-alt" style="color: var(--dorado); margin-right: 15px; width: 20px;"></i> 098145817</p>
-                <p style="margin: 15px 0; display: flex; align-items: center;"><i class="fas fa-envelope" style="color: var(--dorado); margin-right: 15px; width: 20px;"></i> estudiocym.uy@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt" style="color: var(--dorado); margin-right: 15px;"></i> Paysandú 935, oficina 22 - Centro</p>
+                <p><i class="fas fa-phone-alt" style="color: var(--dorado); margin-right: 15px;"></i> 098145817</p>
+                <p><i class="fas fa-envelope" style="color: var(--dorado); margin-right: 15px;"></i> estudiocym.uy@gmail.com</p>
             </div>
             <a href="https://wa.me/59898145817" class="btn-cta" style="font-size: 0.8rem; padding: 10px 25px; margin-top: 20px;">Enviar mensaje</a>
         </div>
@@ -288,4 +260,3 @@
     </script>
 </body>
 </html>
-
