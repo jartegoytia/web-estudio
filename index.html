@@ -42,11 +42,10 @@
         }
 
         .logo img {
-            height: 140px; /* Tamaño del logo agrandado */
+            height: 120px;
             width: auto;
             display: block;
             filter: drop-shadow(0px 0px 3px rgba(184, 134, 11, 0.4));
-            transition: transform 0.3s ease;
         }
 
         nav ul {
@@ -67,7 +66,7 @@
 
         nav ul li a:hover { color: var(--dorado); }
 
-        /* SECCIÓN HERO (CENTRAL CORREGIDA) */
+        /* SECCIÓN HERO */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
@@ -80,26 +79,10 @@
             padding: 0 20px;
         }
 
-        .hero-content {
-            margin-top: 50px; /* Ajuste para que no choque con el logo */
-        }
-
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
-            line-height: 1.1;
-        }
-
-        /* CMD */
-        .hero-content h1:first-child {
             font-size: 4rem;
             margin-bottom: 5px;
-        }
-
-        /* Estudio Jurídico Notarial */
-        .hero-content h1:nth-child(2) {
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 20px;
         }
 
         .hero-separator {
@@ -109,13 +92,6 @@
             margin: 0 auto 25px;
         }
 
-        .hero-content p {
-            font-size: 1.4rem;
-            font-weight: 300;
-            margin-bottom: 35px;
-        }
-
-        /* BOTÓN ESTÉTICO */
         .btn-cta {
             display: inline-block;
             padding: 15px 40px;
@@ -129,13 +105,7 @@
             border: 2px solid var(--dorado);
         }
 
-        .btn-cta:hover {
-            background-color: transparent;
-            color: var(--dorado);
-            transform: scale(1.05);
-        }
-
-        /* SECCIÓN EQUIPO */
+        /* SECCIÓN EQUIPO (ACORDEÓN MEJORADO) */
         #nosotros {
             padding: 100px 10%;
             background-color: white;
@@ -149,26 +119,65 @@
         }
 
         .acordeon {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
-            border-top: 1px solid #ddd;
+            text-align: left;
         }
 
         .item-acc {
-            padding: 20px;
             border-bottom: 1px solid #ddd;
-            transition: 0.3s;
-        }
-
-        .item-acc:hover {
-            background-color: var(--blanco-escarcha);
-            border-left: 4px solid var(--dorado);
+            overflow: hidden;
         }
 
         .nombre-equipo {
+            width: 100%;
+            padding: 20px;
             font-size: 1.2rem;
             font-weight: 600;
             color: var(--gris-oxford);
+            background: none;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .nombre-equipo:hover {
+            background-color: var(--blanco-escarcha);
+            color: var(--dorado);
+        }
+
+        /* Icono de flecha */
+        .nombre-equipo::after {
+            content: '\f078';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .item-acc.active .nombre-equipo::after {
+            transform: rotate(180deg);
+        }
+
+        /* Descripción oculta por defecto */
+        .descripcion-equipo {
+            max-height: 0;
+            padding: 0 20px;
+            opacity: 0;
+            transition: all 0.4s ease-out;
+            color: #555;
+            line-height: 1.6;
+            background-color: #fafafa;
+        }
+
+        .item-acc.active .descripcion-equipo {
+            max-height: 200px; /* Ajusta según el largo del texto */
+            padding: 15px 20px 25px 20px;
+            opacity: 1;
         }
 
         /* WHATSAPP */
@@ -194,8 +203,6 @@
             header { flex-direction: column; padding: 10px; }
             .logo img { height: 70px; }
             nav ul { margin-top: 15px; }
-            .hero-content h1:first-child { font-size: 2.5rem; }
-            .hero-content h1:nth-child(2) { font-size: 1.5rem; }
         }
     </style>
 </head>
@@ -218,9 +225,9 @@
     <section class="hero">
         <div class="hero-content">
             <h1>CMD</h1>
-            <p>Estudio Jurídico Notarial</p>
+            <p style="font-size: 1.8rem; font-family: 'Playfair Display';">Estudio Jurídico Notarial</p>
             <div class="hero-separator"></div>
-            <p>Abogados y Escribanos especializados en Derecho Notarial, Laboral y Civil.</p>
+            <p style="font-size: 1.2rem; font-weight: 300; margin-bottom: 30px;">Abogados y Escribanos especializados en Derecho Notarial, Laboral y Civil.</p>
             <a href="mailto:estudiocmdm@gmail.com?subject=Consulta%20Legal" class="btn-cta">Consultar ahora</a>
         </div>
     </section>
@@ -228,9 +235,28 @@
     <section id="nosotros">
         <h2>Nuestro Equipo</h2>
         <div class="acordeon">
-            <div class="item-acc"><span class="nombre-equipo">Dra. Esc. Alison Catelotti</span></div>
-            <div class="item-acc"><span class="nombre-equipo">Dra. Erika Martínez</span></div>
-            <div class="item-acc"><span class="nombre-equipo">Dr. Esc. Juan Manuel dos Santos</span></div>
+            
+            <div class="item-acc">
+                <button class="nombre-equipo">Dra. Esc. Alison Catelotti</button>
+                <div class="descripcion-equipo">
+                    Egresada de la Carrera de Dra. en Derecho y Ciencias Sociales de Udelar en 2018. Y Egresada de la carrera de notariado en Febrero de 2022.
+                </div>
+            </div>
+
+            <div class="item-acc">
+                <button class="nombre-equipo">Dra. Erika Martínez</button>
+                <div class="descripcion-equipo">
+                    Egresada como Dra. en Derecho y Ciencias Sociales en 2021.
+                </div>
+            </div>
+
+            <div class="item-acc">
+                <button class="nombre-equipo">Dr. Esc. Juan Manuel dos Santos</button>
+                <div class="descripcion-equipo">
+                    Juan Manuel egresó como Escribano en 2024 y como Abogado en 2026.
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -238,10 +264,26 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <script>
+        document.querySelectorAll('.nombre-equipo').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                
+                // Cierra los otros items si quieres que solo haya uno abierto a la vez
+                document.querySelectorAll('.item-acc').forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+
+                // Activa/Desactiva el item actual
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+
 </body>
 </html>
-
-
 
 
 
