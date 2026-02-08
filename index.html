@@ -11,7 +11,8 @@
             --gris-oxford: #2C3E50;
             --dorado: #B8860B; 
             --blanco-escarcha: #F8F9FA;
-            --negro-transparente: rgba(0, 0, 0, 0.7);
+            /* CAMBIO: Opacidad reducida de 0.7 a 0.3 para más transparencia */
+            --negro-transparente: rgba(0, 0, 0, 0.3);
         }
 
         * {
@@ -35,20 +36,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%; /* Un poco más de aire arriba y abajo */
+            padding: 5px 5%; /* CAMBIO: Reducido para que la cinta sea más fina */
             background-color: var(--negro-transparente);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(4px); /* CAMBIO: Blur más suave */
             z-index: 1000;
             transition: all 0.3s ease;
         }
 
-        /* LOGO AGRANDADO */
+        /* LOGO */
         .logo img {
-            height: 180px; /* Aumentado significativamente para Windows/Escritorio */
+            height: 180px; 
             width: auto;
             display: block;
             filter: drop-shadow(0px 0px 5px rgba(184, 134, 11, 0.5));
-            transition: transform 0.3s ease, height 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .logo img:hover {
@@ -67,9 +68,10 @@
             color: white;
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.95rem; /* Un pelín más grande para equilibrar el logo */
+            font-size: 0.95rem;
             transition: 0.3s;
             cursor: pointer;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Sombra para legibilidad */
         }
 
         nav ul li a:hover { color: var(--dorado); }
@@ -89,7 +91,7 @@
 
         .hero-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-size: 4.5rem; /* Un poco más grande para destacar */
             margin-bottom: 5px;
         }
 
@@ -100,6 +102,7 @@
             margin: 0 auto 25px;
         }
 
+        /* BOTÓN CTA */
         .btn-cta {
             display: inline-block;
             padding: 15px 40px;
@@ -119,12 +122,8 @@
             transform: scale(1.05);
         }
 
-        /* SECCIONES COMUNES */
-        section {
-            padding: 100px 10%;
-            text-align: center;
-        }
-
+        /* SECCIONES ACORDEONES */
+        section { padding: 100px 10%; text-align: center; }
         #nosotros { background-color: white; }
         #areas { background-color: var(--blanco-escarcha); }
 
@@ -147,156 +146,32 @@
             transform: translateX(-50%);
         }
 
-        .acordeon {
-            max-width: 700px;
-            margin: 40px auto;
-            text-align: left;
-        }
-
-        .item-acc {
-            background-color: white;
-            border: 1px solid #eee;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .trigger-acc {
-            width: 100%;
-            padding: 20px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--gris-oxford);
-            background: none;
-            border: none;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-family: 'Raleway', sans-serif;
-        }
-
-        .trigger-acc::after {
-            content: '\f078';
-            font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            font-size: 0.8rem;
-            transition: transform 0.3s;
-        }
-
-        .item-acc.active {
-            border-left: 5px solid var(--dorado);
-        }
-
+        .acordeon { max-width: 700px; margin: 40px auto; text-align: left; }
+        .item-acc { background-color: white; border: 1px solid #eee; margin-bottom: 10px; border-radius: 8px; overflow: hidden; }
+        .trigger-acc { width: 100%; padding: 20px; font-size: 1.1rem; font-weight: 600; color: var(--gris-oxford); background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Raleway', sans-serif; }
+        .trigger-acc::after { content: '\f078'; font-family: 'Font Awesome 5 Free'; font-weight: 900; font-size: 0.8rem; transition: transform 0.3s; }
+        .item-acc.active { border-left: 5px solid var(--dorado); }
         .item-acc.active .trigger-acc::after { transform: rotate(180deg); }
-
-        .descripcion-acc {
-            max-height: 0;
-            padding: 0 20px;
-            opacity: 0;
-            transition: all 0.4s ease-out;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .item-acc.active .descripcion-acc {
-            max-height: 300px;
-            padding: 10px 20px 25px 20px;
-            opacity: 1;
-        }
+        .descripcion-acc { max-height: 0; padding: 0 20px; opacity: 0; transition: all 0.4s ease-out; color: #555; line-height: 1.7; }
+        .item-acc.active .descripcion-acc { max-height: 300px; padding: 10px 20px 25px 20px; opacity: 1; }
 
         /* MODAL CONTACTO */
-        .modal-contacto {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            backdrop-filter: blur(5px);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background-color: white;
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 450px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            border-top: 5px solid var(--dorado);
-        }
-
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: var(--gris-oxford);
-        }
-
-        .contacto-info {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .contacto-info p {
-            margin: 15px 0;
-            font-size: 1.1rem;
-            color: #444;
-            display: flex;
-            align-items: center;
-        }
-
-        .contacto-info i {
-            color: var(--dorado);
-            margin-right: 15px;
-            width: 20px;
-            text-align: center;
-        }
+        .modal-contacto { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
+        .modal-content { background-color: white; padding: 40px; border-radius: 15px; max-width: 450px; width: 90%; text-align: center; position: relative; border-top: 5px solid var(--dorado); }
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--gris-oxford); }
+        .contacto-info { text-align: left; margin-bottom: 20px; }
+        .contacto-info p { margin: 15px 0; font-size: 1.1rem; color: #444; display: flex; align-items: center; }
+        .contacto-info i { color: var(--dorado); margin-right: 15px; width: 20px; text-align: center; }
 
         /* WHATSAPP */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 35px;
-            z-index: 1000;
-            text-decoration: none;
-            box-shadow: 2px 5px 15px rgba(0,0,0,0.3);
-            transition: 0.3s;
-        }
+        .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 35px; z-index: 1000; text-decoration: none; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); transition: 0.3s; }
 
-        /* RESPONSIVE AJUSTADO */
         @media (max-width: 768px) {
-            header { 
-                flex-direction: column; 
-                padding: 10px; 
-            }
-            .logo img { 
-                height: 110px; /* En Android/iOS se mantiene grande pero sin tapar todo */
-            }
-            nav ul { 
-                margin-top: 10px; 
-            }
-            nav ul li {
-                margin: 0 10px;
-            }
-            .hero-content h1 { font-size: 2.8rem; }
+            header { padding: 5px 10px; }
+            .logo img { height: 110px; }
+            nav ul { margin-top: 5px; }
+            nav ul li { margin: 0 10px; }
+            .hero-content h1 { font-size: 3rem; }
         }
     </style>
 </head>
@@ -331,21 +206,15 @@
         <div class="acordeon">
             <div class="item-acc">
                 <button class="trigger-acc">Derecho Notarial</button>
-                <div class="descripcion-acc">
-                    Asesoramiento integral en actas, certificaciones, escrituras públicas, compraventas de inmuebles y vehículos, y todo tipo de servicios notariales para garantizar seguridad jurídica.
-                </div>
+                <div class="descripcion-acc">Asesoramiento integral en actas, certificaciones, escrituras públicas, compraventas de inmuebles y vehículos, y todo tipo de servicios notariales.</div>
             </div>
             <div class="item-acc">
                 <button class="trigger-acc">Derecho Laboral</button>
-                <div class="descripcion-acc">
-                    Especialistas en la defensa de los derechos de los trabajadores y empleadores: despidos, accidentes de trabajo, reclamos de haberes, negociación colectiva y conciliaciones ante el MTSS.
-                </div>
+                <div class="descripcion-acc">Defensa de derechos de trabajadores y empleadores: despidos, accidentes, reclamos de haberes y conciliaciones ante el MTSS.</div>
             </div>
             <div class="item-acc">
                 <button class="trigger-acc">Derecho Civil</button>
-                <div class="descripcion-acc">
-                    Representación en procesos judiciales y extrajudiciales: sucesiones, contratos, daños y perjuicios, arrendamientos y desalojos, y asuntos de familia.
-                </div>
+                <div class="descripcion-acc">Sucesiones, contratos, daños y perjuicios, arrendamientos, desalojos y asuntos de familia.</div>
             </div>
         </div>
     </section>
@@ -355,21 +224,15 @@
         <div class="acordeon">
             <div class="item-acc">
                 <button class="trigger-acc">Dra. Esc. Alison Catelotti</button>
-                <div class="descripcion-acc">
-                    Egresada de la Carrera de Dra. en Derecho y Ciencias Sociales de Udelar en 2018. Y Egresada de la carrera de notariado en Febrero de 2022.
-                </div>
+                <div class="descripcion-acc">Egresada de la Carrera de Dra. en Derecho y Ciencias Sociales de Udelar en 2018. Y Egresada de la carrera de notariado en Febrero de 2022.</div>
             </div>
             <div class="item-acc">
                 <button class="trigger-acc">Dra. Erika Martínez</button>
-                <div class="descripcion-acc">
-                    Egresada como Dra. en Derecho y Ciencias Sociales en 2021.
-                </div>
+                <div class="descripcion-acc">Egresada como Dra. en Derecho y Ciencias Sociales en 2021.</div>
             </div>
             <div class="item-acc">
                 <button class="trigger-acc">Dr. Esc. Juan Manuel dos Santos</button>
-                <div class="descripcion-acc">
-                    Juan Manuel egresó como Escribano en 2024 y como Abogado en 2026.
-                </div>
+                <div class="descripcion-acc">Juan Manuel egresó como Escribano en 2024 y como Abogado en 2026.</div>
             </div>
         </div>
     </section>
@@ -401,12 +264,10 @@
                 item.classList.toggle('active');
             });
         });
-
         function toggleModal() {
             const modal = document.getElementById('modalContacto');
             modal.style.display = (modal.style.display === "flex") ? "none" : "flex";
         }
-
         window.onclick = function(event) {
             const modal = document.getElementById('modalContacto');
             if (event.target == modal) modal.style.display = "none";
