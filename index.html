@@ -28,7 +28,7 @@
             overflow-x: hidden;
         }
 
-        /* HEADER / NAVEGACIÓN REFINADA */
+        /* HEADER / NAVEGACIÓN */
         header {
             position: fixed;
             top: 0;
@@ -40,7 +40,6 @@
             background-color: var(--negro-transparente);
             backdrop-filter: blur(5px);
             z-index: 1000;
-            transition: all 0.3s ease;
         }
 
         .logo img {
@@ -60,11 +59,11 @@
         nav ul li a {
             text-decoration: none;
             color: white;
-            font-family: 'Cinzel', serif; /* Fuente elegante coherente con el logo */
+            font-family: 'Cinzel', serif;
             font-weight: 400;
             text-transform: uppercase;
-            font-size: 1.1rem; /* Más grande y legible */
-            letter-spacing: 2px; /* Espaciado estético */
+            font-size: 1.1rem;
+            letter-spacing: 2px;
             transition: 0.3s;
             cursor: pointer;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
@@ -75,7 +74,7 @@
             text-shadow: 0px 0px 10px rgba(184, 134, 11, 0.8);
         }
 
-        /* SECCIÓN HERO */
+        /* HERO SECTION */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), 
@@ -88,9 +87,7 @@
             padding: 0 20px;
         }
 
-        .hero-content {
-            margin-top: 180px; 
-        }
+        .hero-content { margin-top: 180px; }
 
         .hero-content h1 {
             font-family: 'Cinzel', serif;
@@ -121,7 +118,6 @@
             font-size: 1.1rem;
             font-weight: 300;
             margin-bottom: 40px;
-            letter-spacing: 1px;
             max-width: 650px;
             margin-left: auto;
             margin-right: auto;
@@ -138,14 +134,10 @@
             transition: 0.3s;
             text-transform: uppercase;
             border: 2px solid var(--dorado);
+            cursor: pointer;
         }
 
-        .btn-cta:hover {
-            background-color: transparent;
-            color: var(--dorado);
-        }
-
-        /* SECCIONES Y ACORDEONES */
+        /* SECCIONES */
         section { padding: 100px 10%; text-align: center; scroll-margin-top: 180px; }
         #nosotros { background-color: white; }
         #areas { background-color: var(--blanco-escarcha); }
@@ -153,6 +145,7 @@
         h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 40px; position: relative; display: inline-block; }
         h2::after { content: ''; width: 60px; height: 2px; background: var(--dorado); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
 
+        /* ACORDEONES */
         .acordeon { max-width: 750px; margin: 0 auto; text-align: left; }
         .item-acc { background-color: white; border: 1px solid #eee; margin-bottom: 12px; border-radius: 8px; overflow: hidden; }
         .trigger-acc { width: 100%; padding: 22px; font-size: 1.15rem; font-weight: 600; color: var(--gris-oxford); background: none; border: none; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-family: 'Raleway', sans-serif; }
@@ -162,13 +155,25 @@
         .descripcion-acc { max-height: 0; padding: 0 22px; opacity: 0; transition: all 0.4s ease-out; color: #555; line-height: 1.8; }
         .item-acc.active .descripcion-acc { max-height: 400px; padding: 15px 22px 25px 22px; opacity: 1; }
 
-        /* MODAL */
-        .modal-contacto { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); backdrop-filter: blur(5px); align-items: center; justify-content: center; }
-        .modal-content { background-color: white; padding: 40px; border-radius: 15px; max-width: 450px; width: 90%; text-align: center; position: relative; border-top: 5px solid var(--dorado); }
+        /* MODAL CONTACTO - CORREGIDO */
+        .modal-contacto { 
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background-color: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(5px); 
+            align-items: center; 
+            justify-content: center; 
+        }
+        .modal-content { background-color: white; padding: 40px; border-radius: 15px; max-width: 450px; width: 90%; text-align: center; position: relative; border-top: 5px solid var(--dorado); color: var(--gris-oxford); }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: var(--gris-oxford); }
+        
         .whatsapp-btn { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 35px; z-index: 1000; text-decoration: none; box-shadow: 2px 5px 15px rgba(0,0,0,0.3); }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             header { flex-direction: column; padding: 15px 10px; background-color: rgba(0, 0, 0, 0.5); }
             .logo img { height: 100px; }
@@ -177,8 +182,6 @@
             nav ul li a { font-size: 0.85rem; letter-spacing: 1px; }
             .hero-content { margin-top: 140px; }
             .hero-content h1 { font-size: 2.8rem; letter-spacing: 8px; }
-            .subtitulo-hero { font-size: 1.4rem; }
-            .hero-separator { width: 120px; }
         }
     </style>
 </head>
@@ -213,15 +216,15 @@
         <div class="acordeon">
             <div class="item-acc">
                 <button class="trigger-acc">Derecho Notarial</button>
-                <div class="descripcion-acc">Asesoramiento integral en actas, certificaciones, escrituras públicas, compraventas de inmuebles y vehículos, y todo tipo de servicios notariales.</div>
+                <div class="descripcion-acc">Asesoramiento integral en actas, certificaciones, escrituras públicas, compraventas de inmuebles y vehículos.</div>
             </div>
             <div class="item-acc">
                 <button class="trigger-acc">Derecho Laboral</button>
-                <div class="descripcion-acc">Defensa de derechos de trabajadores y empleadores: despidos, accidentes, reclamos de haberes y conciliaciones ante el MTSS.</div>
+                <div class="descripcion-acc">Defensa de derechos de trabajadores y empleadores: despidos, accidentes, reclamos de haberes y MTSS.</div>
             </div>
             <div class="item-acc">
                 <button class="trigger-acc">Derecho Civil</button>
-                <div class="descripcion-acc">Sucesiones, contratos, daños y perjuicios, arrendamientos, desalojos y asuntos de familia con atención personalizada.</div>
+                <div class="descripcion-acc">Sucesiones, contratos, daños y perjuicios, arrendamientos y asuntos de familia.</div>
             </div>
         </div>
     </section>
@@ -238,19 +241,20 @@
     <div id="modalContacto" class="modal-contacto">
         <div class="modal-content">
             <span class="close-modal" onclick="toggleModal()">&times;</span>
-            <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 25px;">Datos de Contacto</h3>
-            <div class="contacto-info">
-                <p><i class="fas fa-map-marker-alt" style="color: var(--dorado); margin-right: 15px;"></i> Paysandú 935, oficina 22 - Centro</p>
-                <p><i class="fas fa-phone-alt" style="color: var(--dorado); margin-right: 15px;"></i> 098145817</p>
-                <p><i class="fas fa-envelope" style="color: var(--dorado); margin-right: 15px;"></i> estudiocym.uy@gmail.com</p>
+            <h3 style="font-family: 'Playfair Display', serif; margin-bottom: 25px; font-size: 1.8rem;">Datos de Contacto</h3>
+            <div style="text-align: left; margin-bottom: 30px;">
+                <p style="margin: 15px 0; display: flex; align-items: center;"><i class="fas fa-map-marker-alt" style="color: var(--dorado); margin-right: 15px; width: 20px;"></i> Paysandú 935, oficina 22 - Centro</p>
+                <p style="margin: 15px 0; display: flex; align-items: center;"><i class="fas fa-phone-alt" style="color: var(--dorado); margin-right: 15px; width: 20px;"></i> 098145817</p>
+                <p style="margin: 15px 0; display: flex; align-items: center;"><i class="fas fa-envelope" style="color: var(--dorado); margin-right: 15px; width: 20px;"></i> estudiocym.uy@gmail.com</p>
             </div>
-            <a href="https://wa.me/59898145817" class="btn-cta" style="font-size: 0.8rem; padding: 10px 25px; margin-top: 20px;">Enviar mensaje</a>
+            <a href="https://wa.me/59898145817" class="btn-cta" style="font-size: 0.8rem; padding: 12px 30px;">Enviar WhatsApp</a>
         </div>
     </div>
 
     <a href="https://wa.me/59898145817?text=Hola,%20me%20gustaría%20realizar%20una%20consulta%20legal." class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script>
+        // Lógica de acordeones
         document.querySelectorAll('.trigger-acc').forEach(button => {
             button.addEventListener('click', () => {
                 const item = button.parentElement;
@@ -260,15 +264,24 @@
                 item.classList.toggle('active');
             });
         });
+
+        // Lógica del Modal CORREGIDA
         function toggleModal() {
             const modal = document.getElementById('modalContacto');
-            modal.style.display = (modal.style.display === \"flex\") ? \"none\" : \"flex\";
+            if (modal.style.display === "flex") {
+                modal.style.display = "none";
+            } else {
+                modal.style.display = "flex";
+            }
         }
+
+        // Cerrar modal al hacer clic fuera de la caja blanca
         window.onclick = function(event) {
             const modal = document.getElementById('modalContacto');
-            if (event.target == modal) modal.style.display = \"none\";
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
     </script>
 </body>
 </html>
-
